@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" parallel="tests">
+  <parameter name="browser" value="chrome"/>
+  <test name="ChromeTest(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="framework.TestNGClass">
+        <methods>
+          <include name="launchapp"/>
+          <include name="launchapp"/>
+          <include name="calculatepercent"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- framework.TestNGClass -->
+    </classes>
+  </test> <!-- ChromeTest(failed) -->
+  <test name="FirefoxTest(failed)" parallel="tests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="framework.TestNGClass">
+        <methods>
+          <include name="launchapp"/>
+          <include name="launchapp"/>
+          <include name="calculatepercent"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- framework.TestNGClass -->
+    </classes>
+  </test> <!-- FirefoxTest(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="1" failed="0" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="20" started-at="2016-08-09T13:38:02Z" finished-at="2016-08-09T13:38:02Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="20" started-at="2016-08-09T13:38:02Z" finished-at="2016-08-09T13:38:02Z">
+      <class name="framework.TestNGClass">
+        <test-method status="FAIL" signature="launchapp(java.lang.String)[pri:0, instance:framework.TestNGClass@2ff4f00f]" name="launchapp" is-config="true" duration-ms="0" started-at="2016-08-09T19:08:02Z" finished-at="2016-08-09T19:08:02Z">
+          <exception class="org.testng.TestNGException">
+            <message>
+              <![CDATA[
+Parameter 'browser' is required by @Configuration on method launchapp but has not been marked @Optional or defined
+in C:\Users\premnath_r\AppData\Local\Temp\testng-eclipse-201684760\testng-customsuite.xml]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by @Configuration on method launchapp but has not been marked @Optional or defined
+in C:\Users\premnath_r\AppData\Local\Temp\testng-eclipse-201684760\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParameters(Parameters.java:155)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:358)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:86)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:199)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.TestRunner.beforeRun(TestRunner.java:641)
+	at org.testng.TestRunner.run(TestRunner.java:609)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:207)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:178)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestNGException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchapp -->
+        <test-method status="SKIP" signature="function()[pri:0, instance:framework.TestNGClass@2ff4f00f]" name="function" duration-ms="3" started-at="2016-08-09T19:08:02Z" finished-at="2016-08-09T19:08:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- function -->
+        <test-method status="SKIP" signature="closeBrowser()[pri:0, instance:framework.TestNGClass@2ff4f00f]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2016-08-09T19:08:02Z" finished-at="2016-08-09T19:08:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- framework.TestNGClass -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

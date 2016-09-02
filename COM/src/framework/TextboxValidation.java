@@ -1,0 +1,92 @@
+package framework;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.WrapsDriver;
+import org.openqa.selenium.internal.WrapsElement;
+
+public class TextboxValidation {
+public void textboxWithAlphabetsSpecialCharachters(String viewPort, String functionality,
+		String driverExecute, String testCaseno,
+		String testCaseDescription, String testCaseExecute,
+		WebElement webelement, String testData, String action,
+		WebDriver driver,  String oldValue, int j,String report,String application,String startTm)
+{
+	
+
+	try {
+		Thread.sleep(1000);
+		if (!viewPort.toUpperCase().equals("APPIUM")) {
+			String Windowid = driver.getWindowHandle();
+			driver.switchTo().window(Windowid);
+		
+		}
+		
+		if(testData.toUpperCase().equals("ALPHABET"))
+		{
+			
+			String Value="alphabet";
+			for(int i=0;i<Value.length();i++)
+			{
+				String s= Character.toString(Value.charAt(i));
+				webelement.sendKeys(s);
+			}
+			
+			String getValue=webelement.getCssValue("value");
+			
+			if(getValue.equals(Value))
+			{
+				System.out.println("Able to enter alphabets in to the text box field");
+			}
+			else
+			{
+				System.out.println("Not able to enter alphabets in to the text box field");
+			}
+		}
+		if(testData.toUpperCase().equals("SPECIALS"))
+		{
+			
+			String Value="%$#@()!@";
+			for(int i=0;i<Value.length();i++)
+			{
+				String s= Character.toString(Value.charAt(i));
+				webelement.sendKeys(s);
+			}
+			String getValue=webelement.getCssValue("value");
+			if(getValue.equals(Value))
+			{
+				System.out.println("Able to enter Special characters in to the text box field");
+			}
+			else
+			{
+				System.out.println("Not able to enter Special characters in to the text box field");
+			}
+		}
+		if(testData.toUpperCase().equals("SPACE"))
+		{
+			String Value="   ";
+			for(int i=0;i<Value.length();i++)
+			{
+				String s= Character.toString(Value.charAt(i));
+				webelement.sendKeys(s);
+				
+			}
+			String getValue=webelement.getCssValue("value");
+			if(getValue.equals(Value))
+			{
+				System.out.println("Able to enter Spaces in to the text box field");
+			}
+			else
+			{
+				System.out.println("Not able to enter spaces in to the text box field");
+			}
+		}
+		
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.getMessage());
+	}
+		
+}
+}
