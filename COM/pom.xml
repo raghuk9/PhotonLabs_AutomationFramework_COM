@@ -40,6 +40,11 @@
 			<artifactId>testng</artifactId>
 			<version>6.9.12</version>
 		</dependency>
+		<dependency>
+		   	<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+   			<version>3.0.5</version>
+  		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
