@@ -1,20 +1,21 @@
 package framework;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
-
+import com.aventstack.extentreports.ExtentTest;
 import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+
 public class UiTest {
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static void uiTest(String functionality, WebElement webelement, WebDriver driver, String ObjectSheetName,
-			String testCaseno, String testCaseDescription, int j, String report, String viewPort, String application,
-			String startTm, String endTm, String ObjectIdentifier) throws IOException, ParseException {
+							  String testCaseno, String testCaseDescription, int j, String report, String viewPort, String application,
+							  String startTm, String endTm, String ObjectIdentifier, ExtentTest test) throws IOException, ParseException {
 		String Status = null;
 		String endTime = null;
 		try {
@@ -63,6 +64,10 @@ public class UiTest {
 						Status = "Pass";
 						Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
 								driver);
+
+						// extent report for status pass
+						test.pass(testCaseno + " " + testCaseDescription);
+
 						break;
 						// System.out.println("camre here");
 					} else {
@@ -70,6 +75,9 @@ public class UiTest {
 						Status = "Fail";
 						Results.results(testCaseno, testCaseDescription, Status,
 								viewPort, application, startTm, endTm, driver);
+
+						// extent report for status fail
+						test.fail(testCaseno + " " + testCaseDescription);
 					}
 
 				} else if (i == ObjectSheetRowcount) {
@@ -78,6 +86,10 @@ public class UiTest {
 					Status = "Fail";
 					Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
 							driver);
+
+					// extent report for status fail
+					test.fail(testCaseno + " " + testCaseDescription);
+
 					// This need to be filled after getting the solution
 					break;
 				}
@@ -110,6 +122,9 @@ public class UiTest {
 			System.out.println(testCaseDescription + "--FAIL OBJ DOES NOT EXISTS ON THE SCREEN");
 			Status = "Fail";
 			Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 		}
 	}

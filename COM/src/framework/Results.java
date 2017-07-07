@@ -1,5 +1,13 @@
 package framework;
 
+import framework.util.CSVWriter;
+import framework.util.ResultVO;
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.jopendocument.util.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,15 +16,6 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.jopendocument.util.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-
-import framework.util.CSVWriter;
-import framework.util.ResultVO;
 
 public class Results {
 	private static final String STATUS_PASS = "Pass";
@@ -36,9 +35,9 @@ public class Results {
 		File file = null;
 		BufferedWriter screenbw = null;
 		if (!(startTm == null)) {
-			java.util.Date startTime = (java.util.Date) ddd.parse(startTm);
+			Date startTime = (Date) ddd.parse(startTm);
 			if (!(endTm == null)) {
-				java.util.Date endTime = (java.util.Date) ddd.parse(endTm);
+				Date endTime = (Date) ddd.parse(endTm);
 				Long timeDiff = endTime.getTime() - startTime.getTime();
 				Long hours = timeDiff / (60 * 60 * 1000);
 				Long minutes = timeDiff / (60 * 1000);

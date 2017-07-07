@@ -1,8 +1,5 @@
 package framework;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
@@ -12,6 +9,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by maretska on 3/31/16.

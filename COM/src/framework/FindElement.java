@@ -1,22 +1,21 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
-
 import io.appium.java_client.MobileElement;
-
-import java.io.IOException;
-import java.text.ParseException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.io.IOException;
+import java.text.ParseException;
 
 public class FindElement {
 
 	public static WebElement find_Element(String ObjectIdentifierType,
 			String ObjectIdentifier, WebDriver driver, String viewPort,
 			String testCaseno, String testCaseDescription, String application,
-			String startTm, String endTm) throws IOException, ParseException {
+			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
 		String Status = null;
 		WebElement webelement = null;
@@ -41,6 +40,9 @@ public class FindElement {
 						+ " Identication of object using XPATH is failed!");
 //				driver.close();
 
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -61,6 +63,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of object using Name selctor is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -82,6 +88,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of object using linktext selctor is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -101,6 +111,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of mobile object using PARTIALLINKTEXT selector is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -123,6 +137,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of object using css selctor is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -139,6 +157,10 @@ public class FindElement {
 				// Status = "Fail";
 				System.out.println(testCaseno
 						+ " Identication of object using ID is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}
@@ -153,6 +175,10 @@ public class FindElement {
 				// Status = "Fail";
 				System.out.println(testCaseno
 						+ " Identication of object using TAG is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}
@@ -169,6 +195,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of object using CLASS name is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}
@@ -180,7 +210,7 @@ public class FindElement {
 	public static MobileElement find_Element(String ObjectIdentifierType,
 			String ObjectIdentifier, AppiumDriver driver, String viewPort,
 			String testCaseno, String testCaseDescription, String application,
-			String startTm, String endTm) throws IOException, ParseException {
+			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
 		String Status = null;
 		MobileElement webelement = null;
@@ -203,6 +233,9 @@ public class FindElement {
 				System.out.println(testCaseno
 						+ " Identication of object mobile using XPATH is failed!");
 
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -223,6 +256,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of mobile object using Name selctor is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -244,6 +281,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of mobile object using linktext selector is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -266,6 +307,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of mobile object using css selctor is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Status = "Fail";
 				//
 				// Results.results(testCaseno, testCaseDescription, Status,
@@ -282,6 +327,10 @@ public class FindElement {
 				// Status = "Fail";
 				System.out.println(testCaseno
 						+ " Identication of mobile object using ID is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}
@@ -296,6 +345,10 @@ public class FindElement {
 				// Status = "Fail";
 				System.out.println(testCaseno
 						+ " Identication of mobile object using TAG is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}
@@ -312,6 +365,10 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Identication of mobile object using CLASS name is failed!");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 				// Results.results(testCaseno, testCaseDescription, Status,
 				// viewPort, application, startTm, endTm, driver);
 			}

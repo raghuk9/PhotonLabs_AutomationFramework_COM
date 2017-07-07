@@ -1,12 +1,12 @@
 package framework;
 
-import java.util.HashMap;
-import java.util.Set;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+
+import java.util.HashMap;
+import java.util.Set;
 
 public class IosNativeScroll {
 

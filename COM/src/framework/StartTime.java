@@ -14,7 +14,7 @@ public class StartTime {
 		Date newdate=new Date();
 		String date=start.format(newdate);
 		
-		java.util.Date startDate=start.parse(date);
+		Date startDate=start.parse(date);
 		System.out.println("Calculating the scenario start time.....");
 		return startDate;
 	}

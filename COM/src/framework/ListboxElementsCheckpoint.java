@@ -1,21 +1,22 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
 public class ListboxElementsCheckpoint {
 	public void listboxElementsCheckpoint(String viewPort,
-			String functionality, String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			WebElement webelement, String testData, String action,
-			WebDriver driver, String oldValue, int j,
-			String report, String application, String startTm, String endTm,Set<String> windowhandles)
+										  String functionality, String driverExecute, String testCaseno,
+										  String testCaseDescription, String testCaseExecute,
+										  WebElement webelement, String testData, String action,
+										  WebDriver driver, String oldValue, int j,
+										  String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException {
 
 		String Status = null;
@@ -56,8 +57,11 @@ public class ListboxElementsCheckpoint {
 			
 
 			if (counter == List.size()) {
-				System.out
-						.println("All the list items are displaying correctly");
+				System.out.println("All the list items are displaying correctly");
+
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
+
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 
@@ -66,8 +70,11 @@ public class ListboxElementsCheckpoint {
 				}
 
 			} else {
-				System.out
-						.println("All the list items are not displaying correctly");
+				System.out.println("All the list items are not displaying correctly");
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
+
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 
@@ -76,6 +83,10 @@ public class ListboxElementsCheckpoint {
 				}
 			}
 		} catch (Exception e) {
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 

@@ -1,13 +1,13 @@
 package framework;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.Set;
-
-import org.openqa.selenium.By;
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Set;
 
 public class DoubleClick {
 	
@@ -16,7 +16,7 @@ public class DoubleClick {
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
 			WebDriver driver,  String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
 	
 			{
 		String Status = null;
@@ -43,6 +43,10 @@ public class DoubleClick {
 			
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
+
+			// extent report for status pass
+			test.pass(testCaseno + " " + testCaseDescription);
+
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				Results.results(testCaseno, testCaseDescription, Status,
@@ -53,6 +57,10 @@ public class DoubleClick {
 		} 
 		catch (Exception e) {
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(testCaseno, testCaseDescription, Status,

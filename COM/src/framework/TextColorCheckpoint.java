@@ -1,22 +1,22 @@
 package framework;
 
-import java.awt.Color;
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 public class TextColorCheckpoint {
 	
 	public void textColorCheckpoint(String viewPort, String functionality,
-			String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			WebElement webelement, String testData, String action,
-			WebDriver driver, String oldValue, int j,
-			String report, String application, String startTm, String endTm,Set<String> windowhandles) throws IOException, ParseException
+									String driverExecute, String testCaseno,
+									String testCaseDescription, String testCaseExecute,
+									WebElement webelement, String testData, String action,
+									WebDriver driver, String oldValue, int j,
+									String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
 	{
 		
 		
@@ -51,6 +51,9 @@ public class TextColorCheckpoint {
 
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
 			}
 			else
 			{
@@ -59,6 +62,9 @@ public class TextColorCheckpoint {
 
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
 			}
 			
 		}
@@ -70,7 +76,9 @@ public class TextColorCheckpoint {
 
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
-			
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 			

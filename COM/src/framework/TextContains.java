@@ -1,19 +1,20 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 public class TextContains {
 	public void textContains(String viewPort, String functionality,
-			String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			WebElement webelement, String testData, String action,
-			WebDriver driver,  String oldValue, int j,
-			String report, String application, String startTm, String endTm,Set<String> windowhandles)
+							 String driverExecute, String testCaseno,
+							 String testCaseDescription, String testCaseExecute,
+							 WebElement webelement, String testData, String action,
+							 WebDriver driver, String oldValue, int j,
+							 String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException {
 		String Status = null;
 		try {
@@ -39,12 +40,19 @@ public class TextContains {
                 Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
 
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
+
 			} else {
 				System.out.println(testCaseno+" "+testCaseDescription+"--FAIL");
 				Status = "Fail";
 
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
+
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
 			}
 
 		} catch (Exception e) {
@@ -53,6 +61,9 @@ public class TextContains {
 			System.out.println(testCaseno+" "+testCaseDescription+"--Not able to compare the text--FAIL");
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 		}
 

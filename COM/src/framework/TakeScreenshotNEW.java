@@ -1,16 +1,16 @@
 package framework;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Set;
-
 import org.jopendocument.util.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Set;
 
 public class TakeScreenshotNEW {
 	@SuppressWarnings({ "unused", "deprecation", "resource" })

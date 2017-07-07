@@ -2,7 +2,6 @@ package framework;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 

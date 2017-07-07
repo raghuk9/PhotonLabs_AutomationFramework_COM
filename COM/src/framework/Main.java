@@ -9,6 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
@@ -16,8 +21,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import framework.util.ReportFooter;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 
 @SuppressWarnings("unused")
 public class Main {
@@ -29,6 +32,12 @@ public class Main {
 	private static final String APPAND = "APPAND";
 	private static final String APPIOS = "APPIOS";
 	private static final String YES_VALUE = "YES";
+
+	// variable for extent reports
+	private static ExtentReports extent;
+	private static ExtentTest test;
+	public static String driverName;
+
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException,
@@ -82,6 +91,10 @@ public class Main {
 			String report = null;
 			String application = null;
 			String firefoxPath = null;
+
+			// creating instance for extent reports
+			extent = ExtentManager.createInstance("extentReport.html");
+
 			for (int i = 1; i < sheet.getRowCount(); i++) {
 				System.out.println("Started reading the Driversheet sheet......");
 				viewPortValue = sheet.getCellAt(0, i);
@@ -134,6 +147,10 @@ public class Main {
 								+ functionalitySheetName + " Sheetname is case sensitive");
 						e.printStackTrace();
 					}
+
+					// creating test for extent report
+					test = extent.createTest(application);
+
 					for (int j = 1; j < functionalitysheet.getRowCount(); j++) {
 						if ("END".equals(functionalitysheet.getCellAt(0, j).getTextValue().trim())) {
 							System.out.println("Exiting inner loop");
@@ -162,28 +179,28 @@ public class Main {
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
 									mobileelement = FindElement.find_Element(ObjectIdentifierType, ObjectIdentifier,
 											appiumdriver, viewPort, testCaseno, testCaseDescription, application,
-											startTm, endTm);
+											startTm, endTm, test);
 								} else {
 									webelement = FindElement.find_Element(ObjectIdentifierType, ObjectIdentifier,
 											driver, viewPort, testCaseno, testCaseDescription, application, startTm,
-											endTm);
+											endTm, test);
 								}
 							}
 							if (ACTION_UI_TEST.equals(action)) {
 								UiTest.uiTest(functionality, webelement, driver, ObjectSheetName, testCaseno,
 										testCaseDescription, j, report, viewPort, application, startTm, endTm,
-										ObjectIdentifier);
+										ObjectIdentifier, test);
 							} else if (action.equals("Click")) {
 								if (DriverToInvoke.toUpperCase().equals(APPIOS)
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
 									windowhandles = Click.click(viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, mobileelement, testData, action,
 											appiumdriver, oldValue, j, report, application, startTm, endTm,
-											windowhandles);
+											windowhandles, test);
 								} else {
 									windowhandles = Click.click(viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-											oldValue, j, report, application, startTm, endTm, windowhandles);
+											oldValue, j, report, application, startTm, endTm, windowhandles, test);
 								}
 							} else if (action.equals("StartTime")) {
 								startTime = (java.util.Date) StartTime.startTime();
@@ -193,12 +210,20 @@ public class Main {
 								Status = "Pass";
 								Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm,
 										endTm, driver);
+
+								// extent report for status pass
+								test.pass(testCaseno + " " + testCaseDescription);
+
 							} else if (action.equals("EndTime")) {
 								java.util.Date endTime = (java.util.Date) EndTime.endTime();
 								endTm = dd.format(endTime);
 								Status = "Pass";
 								Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm,
 										endTm, driver);
+
+								// extent report for status pass
+								test.pass(testCaseno + " " + testCaseDescription);
+
 								endTm = null;
 							} else if (action.equals("OldValueCapture")) {
 								OldValueCapture o = new OldValueCapture();
@@ -211,17 +236,17 @@ public class Main {
 							} else if (action.equals(ROWS_IN_GRID)) {
 								RowsInGrid.rowsInGrid(viewPort, functionality, driverExecute, testCaseno,
 										testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-										oldValue, j, report, application, startTm, endTm, ObjectIdentifier);
+										oldValue, j, report, application, startTm, endTm, ObjectIdentifier, test);
 							} else if (ACTION_SIZE_AND_LOCATION.equals(action)) {
 								SizeAndLocation.sizeAndLocation(viewPort, functionality, driverExecute, testCaseno,
 										testCaseDescription, testCaseExecute, webelement, testData, action, driver,
 										oldValue, j, report, application, startTm, endTm, windowhandles,
-										ObjectSheetName, ObjectIdentifier);
+										ObjectSheetName, ObjectIdentifier, test);
 							} else {
 								String Classname = "framework.";
 								Class newclass = Class.forName(Classname.concat(action));
 								Object object = newclass.newInstance();
-								Class[] par = new Class[17];
+								Class[] par = new Class[18];
 								par[0] = String.class;
 								par[1] = String.class;
 								par[2] = String.class;
@@ -237,6 +262,7 @@ public class Main {
 								par[14] = String.class;
 								par[15] = String.class;
 								par[16] = Set.class;
+								par[17] = ExtentTest.class;
 								if (DriverToInvoke.toUpperCase().equals(APPIOS)
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
 									par[6] = MobileElement.class;
@@ -254,11 +280,11 @@ public class Main {
 									method.invoke(object, viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, mobileelement, testData, action,
 											appiumdriver, oldValue, j, report, application, startTm, endTm,
-											windowhandles);
+											windowhandles, test);
 								} else {
 									method.invoke(object, viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-											oldValue, j, report, application, startTm, endTm, windowhandles);
+											oldValue, j, report, application, startTm, endTm, windowhandles, test);
 								}
 							}
 						}
@@ -276,6 +302,10 @@ public class Main {
 			e.printStackTrace();
 		} finally {
 			System.out.println("In main finally about to quit");
+
+			// flushing the report to extent
+			extent.flush();
+
 			if (driver != null) {
 				driver.quit();
 			}

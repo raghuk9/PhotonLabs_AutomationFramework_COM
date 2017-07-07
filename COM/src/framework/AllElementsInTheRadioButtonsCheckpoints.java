@@ -1,13 +1,14 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class AllElementsInTheRadioButtonsCheckpoints {
 	public void allElementsInTheRadioButtonsCheckpoints(String viewPort,
@@ -15,7 +16,7 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
 			WebDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException {
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException {
 		String Status = null;
 		try {
 
@@ -44,6 +45,9 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 					
 					Results.results(testCaseno, testCaseDescription, Status,
 							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
 				
 			} else {
 				System.out.println("All Radio buttons are not there");
@@ -52,6 +56,9 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 					
 					Results.results(testCaseno, testCaseDescription, Status,
 							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
 				
 			}
 		} catch (Exception e) {
@@ -61,6 +68,9 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 				
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 	}

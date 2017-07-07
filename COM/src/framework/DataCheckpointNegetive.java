@@ -1,14 +1,14 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class DataCheckpointNegetive {
 	public void dataCheckpointNegetive(String viewPort, String functionality,
@@ -16,7 +16,7 @@ public class DataCheckpointNegetive {
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
 			WebDriver driver,  String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException {
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException {
 		String Status = null;
 		try {
 
@@ -32,7 +32,10 @@ public class DataCheckpointNegetive {
                     Status = "Pass";
 					
 					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver); 
+							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status pass
+				test.pass(testCaseno + ": " + testCaseDescription);
 					
 				 
 			} else {
@@ -44,6 +47,9 @@ public class DataCheckpointNegetive {
 					
 					Results.results(testCaseno, testCaseDescription, Status,
 							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
 				
 			}
 		} catch (Exception e) {
@@ -52,16 +58,19 @@ public class DataCheckpointNegetive {
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 	}
 	
 	public void dataCheckpointNegetive(String viewPort, String functionality,
-			String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			MobileElement element, String testData, String action,
-			AppiumDriver driver,  String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException {
+									   String driverExecute, String testCaseno,
+									   String testCaseDescription, String testCaseExecute,
+									   MobileElement element, String testData, String action,
+									   AppiumDriver driver, String oldValue, int j,
+									   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException {
 		String Status = null;
 		try {
 
@@ -77,7 +86,10 @@ public class DataCheckpointNegetive {
                     Status = "Pass";
 					
 					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver); 
+							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
 					
 				 
 			} else {
@@ -89,6 +101,9 @@ public class DataCheckpointNegetive {
 					
 					Results.results(testCaseno, testCaseDescription, Status,
 							viewPort, application, startTm, endTm, driver);
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
 				
 			}
 		} catch (Exception e) {
@@ -97,6 +112,9 @@ public class DataCheckpointNegetive {
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 	}

@@ -1,17 +1,14 @@
 package framework;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AlertBoxTextCheckpoint {
 	public void alertBoxTextCheckpoint(String viewPort,
@@ -19,9 +16,9 @@ public class AlertBoxTextCheckpoint {
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
 			WebDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException
+			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException
 	{
-		
+
 		
 		String Status=null;		
 		System.out.println(driver.switchTo().alert().getText());
@@ -35,6 +32,9 @@ public class AlertBoxTextCheckpoint {
 
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
+
+			// extent report for status pass
+			test.pass(testCaseno + " " + testCaseDescription);
 		}
 		else
 		{
@@ -43,6 +43,9 @@ public class AlertBoxTextCheckpoint {
 
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription);
 		}
 		
 	}
@@ -53,7 +56,7 @@ public class AlertBoxTextCheckpoint {
 			String testCaseDescription, String testCaseExecute,
 			MobileElement element, String testData, String action,
 			AppiumDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles) throws IOException, ParseException
+			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException
 	{
 		
 		
@@ -69,6 +72,9 @@ public class AlertBoxTextCheckpoint {
 
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
+
+			// extent report for status pass
+			test.pass(testCaseno + " " + testCaseDescription);
 		}
 		else
 		{
@@ -77,6 +83,9 @@ public class AlertBoxTextCheckpoint {
 
 			Results.results(testCaseno, testCaseDescription, Status,
 					viewPort, application, startTm, endTm, driver);
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription);
 		}
 		
 	}	

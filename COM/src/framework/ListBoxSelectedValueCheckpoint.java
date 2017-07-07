@@ -1,21 +1,22 @@
 package framework;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.Set;
-
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Set;
+
 public class ListBoxSelectedValueCheckpoint {
 	public void listBoxSelectedValueCheckpoint(String viewPort,
-			String functionality, String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			WebElement webelement, String testData, String action,
-			WebDriver driver, String oldValue, int j,
-			String report, String application, String startTm, String endTm,Set<String> windowhandles)
+											   String functionality, String driverExecute, String testCaseno,
+											   String testCaseDescription, String testCaseExecute,
+											   WebElement webelement, String testData, String action,
+											   WebDriver driver, String oldValue, int j,
+											   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws InterruptedException, IOException, ParseException {
 		String Status = null;
 		try {
@@ -33,6 +34,9 @@ public class ListBoxSelectedValueCheckpoint {
 						+ " Displaying correctly as "
 						+ Select.getFirstSelectedOption().getText());
 
+				// extent report for status pass
+				test.pass(testCaseno + " " + testCaseDescription);
+
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 
@@ -43,6 +47,10 @@ public class ListBoxSelectedValueCheckpoint {
 				System.out.println(testCaseDescription
 						+ " Displaying incorrectly as "
 						+ Select.getFirstSelectedOption().getText());
+
+				// extent report for status fail
+				test.fail(testCaseno + " " + testCaseDescription);
+
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 
@@ -51,11 +59,16 @@ public class ListBoxSelectedValueCheckpoint {
 				}
 			}
 		} catch (Exception e) {
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 
 				Results.results(testCaseno, testCaseDescription, Status,
 						viewPort, application, startTm, endTm, driver);
+
 			}
 		}
 	}

@@ -1,13 +1,7 @@
 package framework;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Platform;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,8 +13,10 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.TestNG;
 import org.testng.collections.Lists;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.ios.IOSDriver;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 public class Selecting_Device {
 
@@ -62,6 +58,7 @@ public class Selecting_Device {
 		String osname = System.getProperty("os.name").toLowerCase();
 		System.out.println("osname = " + osname);
 		WebDriver driver = null;
+		capabilities = new DesiredCapabilities();
 //		String platform = "";
 //		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 //		Dimension dimension;
@@ -81,6 +78,25 @@ public class Selecting_Device {
 				System.setProperty("webdriver.chrome.driver", path);
 				return new ChromeDriver();
 			}
+		} else if (driverType.toUpperCase().equals("APPCHROME"))
+		{
+			capabilities.setCapability("device", "Android");
+			capabilities.setCapability("deviceName", "Android");
+			capabilities.setCapability("version", "4.4");
+			capabilities.setCapability("platform", "MAC");
+			capabilities.setCapability("platformName", "Android");
+			capabilities.setCapability("app", "chrome");
+			try
+			{
+				driver = new RemoteWebDriver(new URL(
+						"http://127.0.0.1:4723/wd/hub/"), capabilities);
+				System.out.println("mobile chrome opened");
+				return driver;
+			}
+			catch (Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
 		} else if (GRID.equalsIgnoreCase(driverType)) {
 			// TODO as testng provide flexible way to implement grid do we need
 			// this code
@@ -89,7 +105,7 @@ public class Selecting_Device {
 			suites.add("testng.xml");
 			testNG.setTestSuites(suites);
 			testNG.run();
-			
+
 //			if (platform.equalsIgnoreCase("Windows")) {
 //				desiredCapabilities.setPlatform(Platform.WINDOWS);
 //			}
