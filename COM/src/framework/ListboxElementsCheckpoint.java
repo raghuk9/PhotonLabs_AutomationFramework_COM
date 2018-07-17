@@ -15,9 +15,9 @@ public class ListboxElementsCheckpoint {
 										  String functionality, String driverExecute, String testCaseno,
 										  String testCaseDescription, String testCaseExecute,
 										  WebElement webelement, String testData, String action,
-										  WebDriver driver, String oldValue, int j,
+										  WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 										  String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
-			throws IOException, ParseException {
+			throws IOException, ParseException, InterruptedException {
 
 		String Status = null;
 		try {
@@ -65,8 +65,8 @@ public class ListboxElementsCheckpoint {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 				}
 
 			} else {
@@ -78,8 +78,8 @@ public class ListboxElementsCheckpoint {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 				}
 			}
 		} catch (Exception e) {
@@ -89,9 +89,8 @@ public class ListboxElementsCheckpoint {
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
 			}
 		}
 	}

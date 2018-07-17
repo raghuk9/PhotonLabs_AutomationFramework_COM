@@ -15,7 +15,7 @@ public class ComparingOldValue {
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
-			WebDriver driver,  String oldValue, int j,
+			WebDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws InterruptedException,
 			IOException, ParseException {
 		String Status = null;
@@ -44,8 +44,7 @@ public class ComparingOldValue {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				}
 			}
@@ -59,8 +58,7 @@ public class ComparingOldValue {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				}
 			}
@@ -72,8 +70,7 @@ public class ComparingOldValue {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			}
 		}
@@ -83,7 +80,7 @@ public class ComparingOldValue {
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			MobileElement element, String testData, String action,
-			AppiumDriver driver,  String oldValue, int j,
+			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws InterruptedException,
 			IOException, ParseException {
 		String Status = null;
@@ -113,8 +110,7 @@ public class ComparingOldValue {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				}
 			}
 
@@ -127,8 +123,7 @@ public class ComparingOldValue {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				}
 			}
 		} catch (Exception e) {
@@ -139,8 +134,7 @@ public class ComparingOldValue {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 			}
 		}
 	}	

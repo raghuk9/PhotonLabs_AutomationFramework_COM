@@ -14,8 +14,8 @@ public class ListBoxSelectByVisibleText {
 										   String driverExecute, String testCaseno,
 										   String testCaseDescription, String testCaseExecute,
 										   WebElement webelement, String testData, String action,
-										   WebDriver driver, String oldValue, int j,
-										   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+										   WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+										   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		String Status=null;
 		try
@@ -38,9 +38,8 @@ public class ListBoxSelectByVisibleText {
 
 				Status = "Pass";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
-			}
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+	}
 		}
 		
 		
@@ -54,8 +53,7 @@ public class ListBoxSelectByVisibleText {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 			}
 		}
 	}

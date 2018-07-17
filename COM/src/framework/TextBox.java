@@ -13,7 +13,7 @@ public class TextBox {
 						String driverExecute, String testCaseno,
 						String testCaseDescription, String testCaseExecute,
 						WebElement webelement, String testData, String action,
-						WebDriver driver, String oldValue, int j,
+						WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 						String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws InterruptedException, IOException, ParseException {
 		
@@ -45,8 +45,8 @@ public class TextBox {
 				Status = "Pass";
 				System.out.println(testCaseno+ " Entered " + testData
 						+ " In to the text box sucessfully");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+						application, driver, test, TakeScreenshot);
 			}
 		
 		} catch (Exception e) {
@@ -59,8 +59,8 @@ public class TextBox {
 				System.out.println(testCaseno+" " +
 						"Not able to enter " + testData
 						+ " In to the text box");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+						application, driver, test, TakeScreenshot);
 			}
 		}
 	}

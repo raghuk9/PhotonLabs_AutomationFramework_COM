@@ -13,9 +13,9 @@ public class TextCheckpoint {
 							   String driverExecute, String testCaseno,
 							   String testCaseDescription, String testCaseExecute,
 							   WebElement webelement, String testData, String action,
-							   WebDriver driver, String oldValue, int j,
+							   WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 							   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
-			throws IOException, ParseException {
+			throws IOException, ParseException, InterruptedException {
 		String Status = null;
 		try {
 			
@@ -37,8 +37,8 @@ public class TextCheckpoint {
 				System.out.println(testCaseno+" "+testCaseDescription+"--PASS");
                 Status = "Pass";
                 Thread.sleep(2000);
-                Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+                Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status pass
 				test.pass(testCaseno + " " + testCaseDescription);
@@ -47,8 +47,8 @@ public class TextCheckpoint {
 				System.out.println(testCaseno+" "+testCaseDescription+"--FAIL");
 				Status = "Fail";
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription);
@@ -58,8 +58,8 @@ public class TextCheckpoint {
 
 			Status = "Fail";
 			System.out.println(testCaseno+" "+testCaseDescription+"--Not able to compare the text--FAIL");
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());

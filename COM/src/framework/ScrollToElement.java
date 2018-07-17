@@ -28,6 +28,7 @@ public static void scrollToElement(String viewPort, String functionality,
 
 		// extent report for status pass
 		test.pass(testCaseno + " " + testCaseDescription);
+		
 	}
 	catch(Exception e)
 	{
