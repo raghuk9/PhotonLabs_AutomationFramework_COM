@@ -116,10 +116,11 @@ public static AppiumDriver selectappiumAndroid() throws Exception {
 		} else if (driverType.toUpperCase().equals("APPCHROME")) {
 			capabilities.setCapability("device", "Android");
 			capabilities.setCapability("deviceName", "Android");
-			capabilities.setCapability("version", "4.4");
+			capabilities.setCapability("browserName","Chrome");
+			//capabilities.setCapability("version", "4.4");
 			capabilities.setCapability("platform", "MAC");
 			capabilities.setCapability("platformName", "Android");
-			capabilities.setCapability("app", "chrome");
+			//capabilities.setCapability("app", "chrome");
 			try {
 				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub/"), capabilities);
 				System.out.println("mobile chrome opened");
