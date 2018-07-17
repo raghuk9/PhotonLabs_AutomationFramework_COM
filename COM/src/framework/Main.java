@@ -160,6 +160,9 @@ public class Main {
 						appiumdriver = Selecting_Device.selectappium();
 					} else if (APPAND.equalsIgnoreCase(DriverToInvoke.trim())) {
 						//appiumdriver = Selecting_Device.selectappiumand();
+						
+						//Reading the Apk location and package from driver sheet
+						
 						appiumdriver = Selecting_Device.selectappiumand(DeviceId,AppLocation,AppPackage,AppActivity);
 					} else {
 						driver = Selecting_Device.selectdevice(DriverToInvoke);
