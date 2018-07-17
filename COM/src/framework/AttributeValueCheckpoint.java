@@ -14,8 +14,8 @@ public class AttributeValueCheckpoint {
 			String functionality, String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
-			WebDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+			WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		
 		String Status=null;
@@ -37,28 +37,28 @@ public class AttributeValueCheckpoint {
 				System.out.println(testCaseno+" "+testCaseDescription+" --Pass");
 				Status = "Pass";
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
+				//test.pass(testCaseno + " " + testCaseDescription);
 			}
 			else
 			{
 				Status = "Fail";
                 System.out.println(testCaseno+" "+testCaseDescription+" --Fail");
-                Results.results(testCaseno, testCaseDescription, Status,
-    					viewPort, application, startTm, endTm, driver);
+                Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
+				//test.fail(testCaseno + " " + testCaseDescription);
 			}
 
 		} catch (Exception e) {
             System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 			Status = "Fail";
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());

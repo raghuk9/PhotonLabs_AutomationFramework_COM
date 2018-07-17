@@ -14,9 +14,9 @@ public class AlertBoxTextCheckpoint {
 	public void alertBoxTextCheckpoint(String viewPort,
 			String functionality, String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
-			WebElement webelement, String testData, String action,
+			WebElement webelement, String testData, String action,String DriverToInvoke, String TakeScreenshot,
 			WebDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException
+			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 
 		
@@ -30,19 +30,23 @@ public class AlertBoxTextCheckpoint {
 
 			Status = "Pass";
 
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
-
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+					application, driver, test, TakeScreenshot);
 			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
+			//test.pass(testCaseno + " " + testCaseDescription);
 		}
 		else
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+"--FAIL");
 			Status = "Fail";
 
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			try {
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+						application, driver, test, TakeScreenshot);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription);
@@ -55,8 +59,8 @@ public class AlertBoxTextCheckpoint {
 			String functionality, String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			MobileElement element, String testData, String action,
-			AppiumDriver driver, String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException
+			AppiumDriver driver, String oldValue, int j,String DriverToInvoke, String TakeScreenshot,
+			String report, String application,String startTm,String endTm,Set<String> windowhandles,ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		
 		
@@ -70,22 +74,27 @@ public class AlertBoxTextCheckpoint {
 
 			Status = "Pass";
 
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+					application, driver, test, TakeScreenshot);
 
 			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
+			//test.pass(testCaseno + " " + testCaseDescription);
 		}
 		else
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+"--FAIL");
 			Status = "Fail";
 
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			try {
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+						application, driver, test, TakeScreenshot);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription);
+			//test.fail(testCaseno + " " + testCaseDescription);
 		}
 		
 	}	

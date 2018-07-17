@@ -15,8 +15,8 @@ public class DataCheckpointNegetive {
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
-			WebDriver driver,  String oldValue, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException {
+			WebDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String Status = null;
 		try {
 
@@ -31,8 +31,7 @@ public class DataCheckpointNegetive {
 						+ " Displaying correctly as " + webelement.getText());
                     Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+                    Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				// extent report for status pass
 				test.pass(testCaseno + ": " + testCaseDescription);
@@ -45,8 +44,7 @@ public class DataCheckpointNegetive {
 				
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription);
@@ -56,8 +54,7 @@ public class DataCheckpointNegetive {
 			
 			    Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
@@ -69,8 +66,8 @@ public class DataCheckpointNegetive {
 									   String driverExecute, String testCaseno,
 									   String testCaseDescription, String testCaseExecute,
 									   MobileElement element, String testData, String action,
-									   AppiumDriver driver, String oldValue, int j,
-									   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException {
+									   AppiumDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+									   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String Status = null;
 		try {
 
@@ -85,8 +82,7 @@ public class DataCheckpointNegetive {
 						+ " Displaying correctly as " + element.getText());
                     Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+                    Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				// extent report for status pass
 				test.pass(testCaseno + " " + testCaseDescription);
@@ -99,8 +95,7 @@ public class DataCheckpointNegetive {
 				
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription);
@@ -110,8 +105,7 @@ public class DataCheckpointNegetive {
 			
 			    Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
