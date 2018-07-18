@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
 
-public class DataCheckpointNegetive {
-	public void dataCheckpointNegetive(String viewPort, String functionality,
+public class DataCheckpointNegative {
+	public void dataCheckpointNegative(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,

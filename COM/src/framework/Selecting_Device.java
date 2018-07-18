@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -106,12 +107,16 @@ public static AppiumDriver selectappiumAndroid() throws Exception {
 				File ff = new File("Drivers/chromedriver.exe");
 				String path = ff.getAbsolutePath();
 				System.setProperty("webdriver.chrome.driver", path);
-				return new ChromeDriver();
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("disable-infobars");
+				return new ChromeDriver(options);
 			} else {
 				File chromePath = new File("Drivers/chromedriver");
 				String path = chromePath.getAbsolutePath();
 				System.setProperty("webdriver.chrome.driver", path);
-				return new ChromeDriver();
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("disable-infobars");
+				return new ChromeDriver(options);
 			}
 		} else if (driverType.toUpperCase().equals("APPCHROME")) {
 			capabilities.setCapability("device", "Android");

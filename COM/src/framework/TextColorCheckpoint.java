@@ -36,7 +36,7 @@ public class TextColorCheckpoint {
 			String[] rgbvalues=values[1].split(",");
 			int r=Integer.parseInt(rgbvalues[0].trim());
 			int g=Integer.parseInt(rgbvalues[1].trim());
-			int b=Integer.parseInt(rgbvalues[2].trim());
+			int b=Integer.parseInt(rgbvalues[2].replace(")", "").trim());
 			System.out.println(r+" "+g+" "+b);
 			
 			Color newcolor=new Color(r, g, b);
@@ -44,7 +44,7 @@ public class TextColorCheckpoint {
 			String hexcode="#"+Integer.toHexString(newcolor.getRGB()).substring(2);
 			System.out.println(hexcode);
 			
-			if(hexcode.equals(testData))
+			if(hexcode.equalsIgnoreCase(testData))
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+"Color is matching");
 				Status = "Pass";
