@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class DoubleClick {
 	
-	public static Set<String>  doubleclick(String viewPort, String functionality,
+	public static Set<String>  doubleClick(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
