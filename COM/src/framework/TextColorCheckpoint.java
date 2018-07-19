@@ -42,7 +42,7 @@ public class TextColorCheckpoint {
 			Color newcolor=new Color(r, g, b);
 			
 			String hexcode="#"+Integer.toHexString(newcolor.getRGB()).substring(2);
-			System.out.println(hexcode);
+			System.out.println(hexcode);				
 			
 			if(hexcode.equalsIgnoreCase(testData))
 			{

@@ -5,23 +5,21 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 @SuppressWarnings("unused")
 public class Main {
@@ -29,7 +27,7 @@ public class Main {
 	private static final String ACTION_SIZE_AND_LOCATION = "SizeAndLocation";
 	private static final String ACTION_UI_TEST = "UiTest";
 	private static final String ROWS_IN_GRID = "RowsInGrid";
-	private static final String APPIUM = "APPIUM";
+	private static final String DESKTOP = "DESKTOP";
 	private static final String APPAND = "APPAND";
 	private static final String APPIOS = "APPIOS";
 	private static final String YES_VALUE = "YES";
@@ -56,7 +54,7 @@ public class Main {
 		int counter = 0;
 		String oldValue = null;
 		WebDriver driver = null;
-
+	
 		try {
 			File ff = new File("DriverSheet.ods");
 			String path = ff.getAbsolutePath();
@@ -165,10 +163,11 @@ public class Main {
 						
 						appiumdriver = Selecting_Device.selectappiumand(DeviceId,AppLocation,AppPackage,AppActivity);
 					} else {
-						driver = Selecting_Device.selectdevice(DriverToInvoke);
+						
+						driver = Selecting_Device.selectdevice(DriverToInvoke,DeviceId);
 					}
 					System.out.println(DriverToInvoke + " Opened");
-					if (!APPIUM.equalsIgnoreCase(viewPort)) {
+					if (DESKTOP.equalsIgnoreCase(viewPort)) {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					}
 					functionalitySheetName = functionality;
