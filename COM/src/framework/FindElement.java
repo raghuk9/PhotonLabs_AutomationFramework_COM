@@ -20,7 +20,7 @@ public class FindElement {
 		String Status = null;
 		WebElement webelement = null;
 
-		if (!viewPort.toUpperCase().equals("APPIUM")) {
+		if (viewPort.toUpperCase().equals("DESKTOP")) {
 			String Windowid = driver.getWindowHandle();
 			driver.switchTo().window(Windowid);
 		}

@@ -40,8 +40,8 @@ public class Selecting_Device {
 	private static final String BROWSER_SAFARI = "SAFARI";
 	private static final String BROWSER_FIREFOX = "FIREFOX";
 	@SuppressWarnings({})
-	static AppiumDriver adriver = null;
 	static AndroidDriver androiddriver = null;
+	static AppiumDriver adriver = null;
 		static WebDriver driver = null;
 	static DesiredCapabilities capabilities = new DesiredCapabilities();
 	private static String browser;
@@ -57,7 +57,7 @@ public class Selecting_Device {
 	public static AndroidDriver selectappiumand(String DeviceId,String AppLocation,String AppPackage,String AppActivity) throws Exception {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,MobilePlatform.ANDROID);
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DeviceId);
-		capabilities.setCapability(MobileCapabilityType.FULL_RESET,"true");
+		capabilities.setCapability(MobileCapabilityType.FULL_RESET,true);
 		
 		capabilities.setCapability(MobileCapabilityType.APP,AppLocation);
 		
@@ -79,7 +79,7 @@ public static AppiumDriver selectappiumAndroid() throws Exception {
 		return adriver;
 	}
 
-	public static WebDriver selectdevice(String driverType) throws Exception, MalformedURLException {
+	public static WebDriver selectdevice(String driverType,String DeviceId) throws Exception, MalformedURLException {
 		String osname = System.getProperty("os.name").toLowerCase();
 		System.out.println("osname = " + osname);
 		WebDriver driver = null;
@@ -119,15 +119,13 @@ public static AppiumDriver selectappiumAndroid() throws Exception {
 				return new ChromeDriver(options);
 			}
 		} else if (driverType.toUpperCase().equals("APPCHROME")) {
-			capabilities.setCapability("device", "Android");
-			capabilities.setCapability("deviceName", "Android");
-			capabilities.setCapability("browserName","Chrome");
-			//capabilities.setCapability("version", "4.4");
-			capabilities.setCapability("platform", "MAC");
-			capabilities.setCapability("platformName", "Android");
-			//capabilities.setCapability("app", "chrome");
+			String[] device = DeviceId.split(",");
+			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, device[1]);
+			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device[0]);	
+			capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
+			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 			try {
-				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub/"), capabilities);
+				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 				System.out.println("mobile chrome opened");
 				return driver;
 			} catch (Exception e) {

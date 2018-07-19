@@ -24,7 +24,7 @@ public class Click {
 		String Windowid=null;
 		try {
 			Thread.sleep(1000);
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 			 Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
 				System.out.println(driver.getWindowHandle());
@@ -34,7 +34,7 @@ public class Click {
 			webelement.click();
 			Thread.sleep(3000);
 			
-			if (!viewPort.toUpperCase().equals("APPIUM"))
+			if (viewPort.toUpperCase().equals("DESKTOP"))
 			{
 			windowhandles=driver.getWindowHandles();
 			}
