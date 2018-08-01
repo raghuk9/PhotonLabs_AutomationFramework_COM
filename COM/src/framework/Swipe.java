@@ -26,21 +26,21 @@ public class Swipe {
 			{
 		System.out.println("Mobile swiping");
 		String Status = null;
-		String Windowid=null;
+//		String Windowid=null;
 		try {
 			Thread.sleep(1000);
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
-			 Windowid = driver.getWindowHandle();
-				driver.switchTo().window(Windowid);
-				System.out.println(driver.getWindowHandle());
-			}
+//			if (!viewPort.toUpperCase().equals("APPIUM")) {
+//			 Windowid = driver.getWindowHandle();
+//				driver.switchTo().window(Windowid);
+//				System.out.println(driver.getWindowHandle());
+//			}
 			// this is to tap on the mobilelement
 //			element.tap(1,1);
 			System.out.println("before...");
-			MobileDriver mdriver = null;
+//			MobileDriver mdriver = null;
 			@SuppressWarnings("rawtypes")
 	    
-			TouchAction action1 = new TouchAction(mdriver);
+			TouchAction action1 = new TouchAction(driver);
 			
 			action1.press(PointOption.point(300,152))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
@@ -55,12 +55,6 @@ public class Swipe {
 			//element.swipe(270, 265, 130, 265, 500);
 			
 			Thread.sleep(3000);
-			
-			if (!viewPort.toUpperCase().equals("APPIUM"))
-			{
-			windowhandles=driver.getWindowHandles();
-			}
-			
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 

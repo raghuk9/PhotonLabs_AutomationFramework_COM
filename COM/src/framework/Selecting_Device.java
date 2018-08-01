@@ -40,7 +40,7 @@ public class Selecting_Device {
 	private static final String BROWSER_SAFARI = "SAFARI";
 	private static final String BROWSER_FIREFOX = "FIREFOX";
 	@SuppressWarnings({})
-	static AndroidDriver androiddriver = null;
+	static AndroidDriver<MobileElement> androiddriver = null;
 	static AppiumDriver adriver = null;
 		static WebDriver driver = null;
 	static DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -54,11 +54,10 @@ public class Selecting_Device {
 		return adriver;
 	}
 
-	public static AndroidDriver selectappiumand(String DeviceId,String AppLocation,String AppPackage,String AppActivity) throws Exception {
+	public static AndroidDriver<MobileElement> selectappiumand(String DeviceId,String AppLocation,String AppPackage,String AppActivity) throws Exception {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,MobilePlatform.ANDROID);
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DeviceId);
-		capabilities.setCapability(MobileCapabilityType.FULL_RESET,true);
-		
+		capabilities.setCapability(MobileCapabilityType.FULL_RESET,"true");
 		capabilities.setCapability(MobileCapabilityType.APP,AppLocation);
 		
 		capabilities.setCapability("appPackage",AppPackage);
@@ -66,6 +65,7 @@ public class Selecting_Device {
 		//capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.APPIUM);
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
 		androiddriver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		Thread.sleep(5000);
 		return androiddriver;
 		}
 	

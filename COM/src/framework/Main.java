@@ -54,7 +54,8 @@ public class Main {
 		int counter = 0;
 		String oldValue = null;
 		WebDriver driver = null;
-	
+		AppiumDriver appiumdriver = null;
+
 		try {
 			File ff = new File("DriverSheet.ods");
 			String path = ff.getAbsolutePath();
@@ -95,8 +96,7 @@ public class Main {
 			String testCaseExecute = null;
 			String ObjectIdentifier = null;
 			String testData = null;
-			String action = null;
-			AppiumDriver appiumdriver = null;
+			String action = null;			
 			String ObjectSheetName = null;
 			String ObjectIdentifierType = null;
 			String report = null;
@@ -157,14 +157,14 @@ public class Main {
 					if (APPIOS.equalsIgnoreCase(DriverToInvoke.trim())) {
 						appiumdriver = Selecting_Device.selectappium();
 					} else if (APPAND.equalsIgnoreCase(DriverToInvoke.trim())) {
-						//appiumdriver = Selecting_Device.selectappiumand();
-						
-						//Reading the Apk location and package from driver sheet
-						
-						appiumdriver = Selecting_Device.selectappiumand(DeviceId,AppLocation,AppPackage,AppActivity);
+						// appiumdriver = Selecting_Device.selectappiumand();
+
+						// Reading the Apk location and package from driver sheet
+
+						appiumdriver = Selecting_Device.selectappiumand(DeviceId, AppLocation, AppPackage, AppActivity);
 					} else {
-						
-						driver = Selecting_Device.selectdevice(DriverToInvoke,DeviceId);
+
+						driver = Selecting_Device.selectdevice(DriverToInvoke, DeviceId);
 					}
 					System.out.println(DriverToInvoke + " Opened");
 					if (DESKTOP.equalsIgnoreCase(viewPort)) {
@@ -228,19 +228,20 @@ public class Main {
 							}
 							if (ACTION_UI_TEST.equals(action)) {
 								UiTest.uiTest(functionality, webelement, driver, ObjectSheetName, testCaseno,
-										testCaseDescription, j, report, viewPort,DriverToInvoke, TakeScreenshot, application, startTm, endTm,
-										ObjectIdentifier, test);
+										testCaseDescription, j, report, viewPort, DriverToInvoke, TakeScreenshot,
+										application, startTm, endTm, ObjectIdentifier, test);
 							} else if (action.equals("Click")) {
 								if (DriverToInvoke.toUpperCase().equals(APPIOS)
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
 									windowhandles = Click.click(viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, mobileelement, testData, action,
-											appiumdriver, oldValue,DriverToInvoke, TakeScreenshot,j, report, application, startTm, endTm,
-											windowhandles, test);
+											appiumdriver, oldValue, DriverToInvoke, TakeScreenshot, j, report,
+											application, startTm, endTm, windowhandles, test);
 								} else {
 									windowhandles = Click.click(viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-											oldValue,DriverToInvoke, TakeScreenshot, j, report, application, startTm, endTm, windowhandles, test);
+											oldValue, DriverToInvoke, TakeScreenshot, j, report, application, startTm,
+											endTm, windowhandles, test);
 								}
 							} else if (action.equals("StartTime")) {
 								startTime = (java.util.Date) StartTime.startTime();
@@ -279,16 +280,19 @@ public class Main {
 							} else if (action.equals(ROWS_IN_GRID)) {
 								RowsInGrid.rowsInGrid(viewPort, functionality, driverExecute, testCaseno,
 										testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-										oldValue,DriverToInvoke,  TakeScreenshot, j, report, application, startTm, endTm, ObjectIdentifier, test);
+										oldValue, DriverToInvoke, TakeScreenshot, j, report, application, startTm,
+										endTm, ObjectIdentifier, test);
 							} else if (ACTION_SIZE_AND_LOCATION.equals(action)) {
-								
-								SizeAndLocation.sizeAndLocation( viewPort,  functionality,  driverExecute,
-										 testCaseno,  testCaseDescription, testCaseExecute,   webelement,
-										 testData,  action,  driver,  oldValue, DriverToInvoke,  TakeScreenshot, j,  report,  application,
-										 startTm,  endTm,  windowhandles,  ObjectSheetName,  ObjectIdentifier,  test);
+
+								SizeAndLocation.sizeAndLocation(viewPort, functionality, driverExecute, testCaseno,
+										testCaseDescription, testCaseExecute, webelement, testData, action, driver,
+										oldValue, DriverToInvoke, TakeScreenshot, j, report, application, startTm,
+										endTm, windowhandles, ObjectSheetName, ObjectIdentifier, test);
+							} else if(action.equalsIgnoreCase("WaitMethod")){
+								WaitMethod.waitMethod(viewPort, functionality, driverExecute, testCaseno, testCaseDescription, testCaseExecute, webelement, testData, action, appiumdriver, oldValue, DriverToInvoke, TakeScreenshot, j, report, application, startTm, endTm, windowhandles, test);
 							} else {
 								//
-								
+
 								//
 								String Classname = "framework.";
 								Class newclass = Class.forName(Classname.concat(action));
@@ -329,12 +333,13 @@ public class Main {
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
 									method.invoke(object, viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, mobileelement, testData, action,
-											appiumdriver, oldValue, DriverToInvoke, TakeScreenshot,j, report, application, startTm, endTm,
-											windowhandles, test);
+											appiumdriver, oldValue, DriverToInvoke, TakeScreenshot, j, report,
+											application, startTm, endTm, windowhandles, test);
 								} else {
 									method.invoke(object, viewPort, functionality, driverExecute, testCaseno,
 											testCaseDescription, testCaseExecute, webelement, testData, action, driver,
-											oldValue,DriverToInvoke, TakeScreenshot, j, report, application, startTm, endTm, windowhandles, test);
+											oldValue, DriverToInvoke, TakeScreenshot, j, report, application, startTm,
+											endTm, windowhandles, test);
 								}
 							}
 						}
@@ -342,7 +347,10 @@ public class Main {
 					// This is to close the web driver to proceed for the
 					// another execution
 					System.out.println("Closing x browser");
-					driver.close();
+					if(driver!=null){
+						driver.close();
+					}
+					
 				}
 			}
 		} catch (Exception e) {
@@ -356,6 +364,8 @@ public class Main {
 
 			if (driver != null) {
 				driver.quit();
+			}else if(appiumdriver != null) {
+				appiumdriver.quit();
 			}
 			System.exit(0);
 		}

@@ -70,11 +70,6 @@ public class DataCheckpoint {
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
-				String Windowid = driver.getWindowHandle();
-				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
-			}
 			Thread.sleep(2000);
 			if (element.getText().equals(testData)) {
 				System.out.println(testCaseDescription

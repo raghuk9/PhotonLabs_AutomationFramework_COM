@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class WaitMethod {
 
-	public void waitMethod(String viewPort, String functionality, String driverExecute, String testCaseno,
+	public static void waitMethod(String viewPort, String functionality, String driverExecute, String testCaseno,
 						   String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
 						   WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j, String report, String application, String startTm, String endTm,
 						   Set<String> windowhandles, ExtentTest test) throws InterruptedException {

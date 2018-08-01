@@ -1,14 +1,16 @@
 package framework;
 
-import com.aventstack.extentreports.ExtentTest;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class Click {
 	
@@ -80,25 +82,13 @@ public class Click {
 			{
 		System.out.println("Mobile click");
 		String Status = null;
-		String Windowid=null;
 		try {
 			Thread.sleep(1000);
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
-			 Windowid = driver.getWindowHandle();
-				driver.switchTo().window(Windowid);
-				System.out.println(driver.getWindowHandle());
-			}
 			// this is to tap on the mobilelement
 
 			//element.tap(1,1);
 			element.click();
 			Thread.sleep(3000);
-			
-			if (!viewPort.toUpperCase().equals("APPIUM"))
-			{
-			windowhandles=driver.getWindowHandles();
-			}
-			
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 
