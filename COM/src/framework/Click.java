@@ -92,10 +92,6 @@ public class Click {
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 
-			// extent report for status pass
-			//test.pass(testCaseno + " " + testCaseDescription);
-			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
@@ -107,9 +103,7 @@ public class Click {
 		catch (Exception e) {
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);

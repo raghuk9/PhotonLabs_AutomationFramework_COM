@@ -19,8 +19,9 @@ public class Screenshot {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		File ScreenShotDirectory = new File("Screenshots");
 		FileUtils.copyFile(scrFile, new File(screens +  File.separator + screenshotFileName ));
-		File fileScreenshot = new File(screens + File.separator +  File.separator + screenshotFileName);
-		return fileScreenshot.getAbsolutePath();
+		File fileScreenshot = new File(screens + File.separator + screenshotFileName);
+		
+		return "."+File.separator+"Screenshots"+File.separator+screenshotFileName;
 	
 	}
 
