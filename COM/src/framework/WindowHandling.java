@@ -12,7 +12,7 @@ public class WindowHandling {
 							   String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
 							   WebDriver driver, String oldValue, int j, String report, String application, String startTm, String endTm,
 							   Set<String> windowhandles, ExtentTest test) throws InterruptedException {
-		Set handles = driver.getWindowHandles();
+		Set<String> handles = driver.getWindowHandles();
 		String firstWinHandle = driver.getWindowHandle();
 		handles.remove(firstWinHandle);
 		String secondWinHandle = (String) handles.iterator().next();

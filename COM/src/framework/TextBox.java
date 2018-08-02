@@ -22,10 +22,9 @@ public class TextBox {
 		String Status = null;
 		try {
 
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				// windowhandles.add(Windowid);
 			}
 
 			Thread.sleep(2000);
@@ -62,6 +61,7 @@ public class TextBox {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void textBox(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,

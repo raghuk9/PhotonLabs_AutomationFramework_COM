@@ -208,17 +208,13 @@ public class FindElement {
 		return webelement;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static MobileElement find_Element(String ObjectIdentifierType,
 			String ObjectIdentifier, AppiumDriver driver, String viewPort,
 			String testCaseno, String testCaseDescription, String application,
 			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
 		MobileElement webelement = null;
-
-//		if (!viewPort.toUpperCase().equals("APPIUM")) {
-//			String Windowid = driver.getWindowHandle();
-//			driver.switchTo().window(Windowid);
-//		}
 
 		System.out.println("mobile - came to find element section");
 		if (ObjectIdentifierType.toUpperCase().equals("XPATH")) {

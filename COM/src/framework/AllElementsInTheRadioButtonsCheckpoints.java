@@ -20,10 +20,9 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 		String Status = null;
 		try {
 
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
 			}
 			
 			
@@ -44,9 +43,6 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 					Status = "Pass";
 					
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-				// extent report for status pass
-				//test.pass(testCaseno + " " + testCaseDescription);
 				
 			} else {
 				System.out.println("All Radio buttons are not there");
@@ -54,9 +50,6 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 					Status = "Fail";
 					
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-				// extent report for status fail
-				//test.fail(testCaseno + " " + testCaseDescription);
 				
 			}
 		} catch (Exception e) {
@@ -65,9 +58,6 @@ public class AllElementsInTheRadioButtonsCheckpoints {
 				System.out.println("ERROR");
 				
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-			// extent report for status fail
-			//test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 	}

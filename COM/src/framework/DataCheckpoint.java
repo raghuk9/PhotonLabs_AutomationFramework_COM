@@ -20,10 +20,9 @@ public class DataCheckpoint {
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
 			}
 			Thread.sleep(2000);
 			if (webelement.getText().equals(testData)) {
@@ -61,11 +60,12 @@ public class DataCheckpoint {
 
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void dataCheckpoint(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			MobileElement element, String testData, String action,
-			AppiumDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws InterruptedException,
 			IOException, ParseException {
 		String Status = null;

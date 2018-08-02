@@ -22,10 +22,9 @@ public class IsDisplayed {
 		String Status = null;
 		try {
 			Thread.sleep(1000);
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				// windowhandles.add(Windowid);
 			}
 			if (webelement.isDisplayed()) {
 				System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
@@ -66,12 +65,11 @@ public class IsDisplayed {
 		}
 	}
 
-	public static void isDisplayed(String viewPort, String functionality,
-			String driverExecute, String testCaseno,
-			String testCaseDescription, String testCaseExecute,
-			MobileElement element, String testData, String action,
-			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
-			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test)
+	@SuppressWarnings("rawtypes")
+	public static void isDisplayed(String viewPort, String functionality, String driverExecute, String testCaseno,
+			String testCaseDescription, String testCaseExecute, MobileElement element, String testData, String action,
+			AppiumDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
+			String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException, InterruptedException {
 		String Status = null;
 		try {

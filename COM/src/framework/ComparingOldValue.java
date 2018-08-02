@@ -20,10 +20,9 @@ public class ComparingOldValue {
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
 			}
 			Thread.sleep(4000);
 			String NewValue = webelement.getText();
@@ -76,6 +75,7 @@ public class ComparingOldValue {
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void comparingOldValue(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
@@ -85,11 +85,7 @@ public class ComparingOldValue {
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
-				String Windowid = driver.getWindowHandle();
-				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
-			}
+			
 			Thread.sleep(4000);
 			String NewValue = element.getText();
 			System.out.println("text from app is...."+NewValue);
