@@ -47,9 +47,7 @@ public class ParagraphCheckpoint {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
+			
 			} else {
 				System.out.println(testCaseno + " " + testCaseDescription + "--FAIL");
 				Status = "Fail";
@@ -57,8 +55,6 @@ public class ParagraphCheckpoint {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 			}
 
 		} catch (Exception e) {
@@ -68,9 +64,7 @@ public class ParagraphCheckpoint {
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
-
+			
 		}
 	}
 
@@ -102,9 +96,7 @@ public class ParagraphCheckpoint {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
+			
 			} else {
 				System.out.println(testCaseno + " " + testCaseDescription + "--FAIL");
 				Status = "Fail";
@@ -112,8 +104,6 @@ public class ParagraphCheckpoint {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 			}
 
 		} catch (Exception e) {
@@ -123,9 +113,7 @@ public class ParagraphCheckpoint {
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
-
+			
 		}
 	}
 

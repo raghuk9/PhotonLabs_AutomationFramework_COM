@@ -39,10 +39,7 @@ public class PageCheckpoint {
 
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
+			
 			} else {
 
 				Status = "Fail";
@@ -50,9 +47,7 @@ public class PageCheckpoint {
 						+ " --Failed");
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-			}
+							}
 
 		} catch (Exception e) {
 
@@ -61,8 +56,7 @@ public class PageCheckpoint {
 					+ " --NotFound");
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+			
 
 		}
 

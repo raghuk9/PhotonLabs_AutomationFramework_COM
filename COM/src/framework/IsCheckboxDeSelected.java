@@ -33,8 +33,6 @@ public class IsCheckboxDeSelected {
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+" --Pass");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
@@ -47,9 +45,6 @@ public class IsCheckboxDeSelected {
 				
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+" --Failed");
-
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";

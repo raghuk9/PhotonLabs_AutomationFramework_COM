@@ -31,9 +31,6 @@ public class ListBoxSelectByVisibleText {
 			select.selectByVisibleText(testData);
 			System.out.println("Selected an item from list box  using visible text");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
@@ -46,9 +43,6 @@ public class ListBoxSelectByVisibleText {
 		catch(Exception e)
 		{
 			System.out.println("Not able to select an list box element using visible text");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

@@ -59,8 +59,6 @@ public class ListboxElementsCheckpoint {
 			if (counter == List.size()) {
 				System.out.println("All the list items are displaying correctly");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
@@ -72,8 +70,7 @@ public class ListboxElementsCheckpoint {
 			} else {
 				System.out.println("All the list items are not displaying correctly");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
+				
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
@@ -84,9 +81,7 @@ public class ListboxElementsCheckpoint {
 			}
 		} catch (Exception e) {
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);

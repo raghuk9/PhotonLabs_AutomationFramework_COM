@@ -34,8 +34,7 @@ public class ToolTipCheckpoint {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 ;
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
+				
 			}
 			else
 			{
@@ -43,18 +42,13 @@ public class ToolTipCheckpoint {
                 System.out.println(testCaseno+" "+testCaseDescription+" Tool tip not matched");
     			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-			}
+				}
 
 		} catch (Exception e) {
             System.out.println(testCaseno+" "+testCaseDescription+" Not able to capture the tool tip");
 			Status = "Fail";
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 		}
 		

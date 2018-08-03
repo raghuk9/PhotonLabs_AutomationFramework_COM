@@ -28,10 +28,6 @@ public class IsDisplayed {
 			}
 			if (webelement.isDisplayed()) {
 				System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
-
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
@@ -40,9 +36,6 @@ public class IsDisplayed {
 				}
 			} else {
 				System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
-
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
@@ -53,8 +46,6 @@ public class IsDisplayed {
 		} catch (Exception e) {
 			System.out.println(testCaseno + " " + testCaseDescription + " --Unexpected error");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
@@ -77,9 +68,6 @@ public class IsDisplayed {
 			if (element.isDisplayed()) {
 				System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
@@ -89,8 +77,6 @@ public class IsDisplayed {
 			} else {
 				System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
@@ -100,9 +86,6 @@ public class IsDisplayed {
 			}
 		} catch (Exception e) {
 			System.out.println(testCaseno + " " + testCaseDescription + " --Unexpected error");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

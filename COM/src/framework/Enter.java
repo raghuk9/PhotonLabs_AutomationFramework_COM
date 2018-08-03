@@ -28,8 +28,7 @@ public class Enter {
 
 			System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
 			Status = "Pass";
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
+	
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
 
@@ -56,8 +55,7 @@ public class Enter {
 
 			System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
 			Status = "Pass";
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
+		
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
 

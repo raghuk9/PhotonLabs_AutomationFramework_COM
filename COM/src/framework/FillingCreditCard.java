@@ -57,9 +57,7 @@ public class FillingCreditCard {
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
-				System.out.println(testCaseno+" " +
-						"Not able to enter " + testData
-						+ " In to the text box");
+				System.out.println(testCaseno+" " +"Not able to enter " + testData+ " In to the text box");
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			}

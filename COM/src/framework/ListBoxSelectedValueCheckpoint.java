@@ -34,10 +34,7 @@ public class ListBoxSelectedValueCheckpoint {
 						+ " Displaying correctly as "
 						+ Select.getFirstSelectedOption().getText());
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
-				if (report.toUpperCase().equals("TESTSTEP")) {
+			if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
@@ -48,9 +45,7 @@ public class ListBoxSelectedValueCheckpoint {
 						+ " Displaying incorrectly as "
 						+ Select.getFirstSelectedOption().getText());
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-
+			
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 
@@ -59,9 +54,7 @@ public class ListBoxSelectedValueCheckpoint {
 			}
 		} catch (Exception e) {
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 

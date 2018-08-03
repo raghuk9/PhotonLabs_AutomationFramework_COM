@@ -255,8 +255,7 @@ public class Main {
 								Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
 										application, driver, test, TakeScreenshot);
 
-								// extent report for status pass
-								test.pass(testCaseno + " " + testCaseDescription);
+								
 
 							} else if (action.equals("EndTime")) {
 								java.util.Date endTime = (java.util.Date) EndTime.endTime();
@@ -265,9 +264,7 @@ public class Main {
 								Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
 										application, driver, test, TakeScreenshot);
 
-								// extent report for status pass
-								test.pass(testCaseno + " " + testCaseDescription);
-
+								
 								endTm = null;
 							} else if (action.equals("OldValueCapture")) {
 								OldValueCapture o = new OldValueCapture();

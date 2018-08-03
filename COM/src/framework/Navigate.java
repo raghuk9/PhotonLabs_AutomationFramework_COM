@@ -26,9 +26,7 @@ public class Navigate {
 			Thread.sleep(4000);
 	        System.out.println(testCaseno+" Navigating to "+testData+ " is done");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 
@@ -37,9 +35,7 @@ public class Navigate {
 			}
 		} catch (Exception e) {
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 

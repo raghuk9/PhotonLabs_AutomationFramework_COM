@@ -51,8 +51,7 @@ public class AttributeValueCheckpoint {
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
+			
 
 		}
 

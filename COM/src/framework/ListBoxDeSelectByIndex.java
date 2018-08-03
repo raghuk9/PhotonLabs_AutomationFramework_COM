@@ -29,8 +29,6 @@ public class ListBoxDeSelectByIndex {
 			select.deselectByIndex(index);
 			System.out.println("De-selected an item from list box  using index");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
@@ -46,8 +44,6 @@ public class ListBoxDeSelectByIndex {
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

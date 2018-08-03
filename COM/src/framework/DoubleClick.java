@@ -45,11 +45,9 @@ public class DoubleClick {
 			windowhandles=driver.getWindowHandles();
 			}
 			
-			
-			System.out.println(testCaseno+" "+testCaseDescription);
+						System.out.println(testCaseno+" "+testCaseDescription);
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
+			
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
@@ -60,9 +58,6 @@ public class DoubleClick {
 		} 
 		catch (Exception e) {
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
@@ -100,9 +95,7 @@ public class DoubleClick {
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
@@ -111,11 +104,9 @@ public class DoubleClick {
          //this is catch statement
 		} 
 		catch (Exception e) {
-			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
+			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR" +e.getMessage());
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);

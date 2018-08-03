@@ -30,8 +30,6 @@ public class ListBoxDeSelectByValue {
 			select.deselectByValue(testData);
 			System.out.println("Deselected an item from list box  using Value");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
@@ -47,8 +45,6 @@ public class ListBoxDeSelectByValue {
 		{
 			System.out.println("Not able to deselect an list box element using value--ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

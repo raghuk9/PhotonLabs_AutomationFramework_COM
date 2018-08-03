@@ -29,10 +29,6 @@ public class MouseHover {
 			Actions MoveHover = new Actions(driver);
 			MoveHover.moveToElement(webelement).build().perform();
 
-
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				
@@ -40,9 +36,6 @@ public class MouseHover {
 
 			}
 		} catch (Exception e) {
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

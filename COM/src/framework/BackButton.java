@@ -73,6 +73,7 @@ public class BackButton {
 			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
+			
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 

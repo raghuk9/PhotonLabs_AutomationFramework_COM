@@ -40,8 +40,6 @@ public class AlertBoxTextCheckpoint {
 				e1.printStackTrace();
 			}
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription);
 		}
 
 	}

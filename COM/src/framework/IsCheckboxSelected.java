@@ -33,9 +33,7 @@ public class IsCheckboxSelected {
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+" --Pass");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
+				
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
@@ -48,8 +46,7 @@ public class IsCheckboxSelected {
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+" --Failed");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
+			
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
@@ -61,10 +58,7 @@ public class IsCheckboxSelected {
 		catch(Exception e)
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+" --Unexpected error");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);

@@ -42,9 +42,6 @@ public class PartialLink{
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
@@ -56,8 +53,6 @@ public class PartialLink{
 		catch (Exception e) {
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
@@ -100,8 +95,6 @@ public class PartialLink{
 			
 			System.out.println(testCaseno+" "+testCaseDescription);
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
@@ -114,8 +107,6 @@ public class PartialLink{
 		catch (Exception e) {
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

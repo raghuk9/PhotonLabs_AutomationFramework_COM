@@ -32,9 +32,7 @@ public class DataCheckpointNegative {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status pass
-				test.pass(testCaseno + ": " + testCaseDescription);
-
+				
 			} else {
 				System.out.println(testCaseDescription + " Displaying incorrectly as " + webelement.getText());
 
@@ -43,9 +41,7 @@ public class DataCheckpointNegative {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-
+				
 			}
 		} catch (Exception e) {
 
@@ -53,9 +49,6 @@ public class DataCheckpointNegative {
 			System.out.println(testCaseno + " " + testCaseDescription + " --ERROR");
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
 
 		}
 	}
@@ -76,8 +69,6 @@ public class DataCheckpointNegative {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
 
 			} else {
 				System.out.println(testCaseDescription + " Displaying incorrectly as " + element.getText());
@@ -87,8 +78,6 @@ public class DataCheckpointNegative {
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 						test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 
 			}
 		} catch (Exception e) {
@@ -97,9 +86,6 @@ public class DataCheckpointNegative {
 			System.out.println(testCaseno + " " + testCaseDescription + " --ERROR");
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
 					test, TakeScreenshot);
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
 
 		}
 	}

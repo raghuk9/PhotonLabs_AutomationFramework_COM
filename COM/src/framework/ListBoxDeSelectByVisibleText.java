@@ -29,10 +29,7 @@ public class ListBoxDeSelectByVisibleText {
 			select.deselectByVisibleText(testData);
 			System.out.println("Deselected an item from list box  using visible text");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
-			if (report.toUpperCase().equals("TESTSTEP")) {
+		if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
 				
@@ -45,9 +42,6 @@ public class ListBoxDeSelectByVisibleText {
 		catch(Exception e)
 		{
 			System.out.println("Not able to deselect an list box element using visible text--ERROR");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

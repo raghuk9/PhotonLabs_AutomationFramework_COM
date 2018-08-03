@@ -56,9 +56,7 @@ public class ClickAT {
 	catch (Exception e) {
 		System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-		// extent report for status fail
-		test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+		
 		if (report.toUpperCase().equals("TESTSTEP")) {
 			Status = "Fail";
 			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);

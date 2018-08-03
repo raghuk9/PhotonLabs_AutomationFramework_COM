@@ -30,9 +30,7 @@ public class ListBoxSelectByIndex {
 			select.selectByIndex(index);
 			System.out.println("Selected an item from list box  using index");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
@@ -45,9 +43,6 @@ public class ListBoxSelectByIndex {
 		catch(Exception e)
 		{
 			System.out.println("Not able to select an list box element using index");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

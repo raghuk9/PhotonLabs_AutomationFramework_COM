@@ -30,9 +30,7 @@ public class ListBoxSelectByValue {
 			select.selectByValue(testData);
 			System.out.println("Selected an item from list box  using Value");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
@@ -47,9 +45,7 @@ public class ListBoxSelectByValue {
 		{
 			System.out.println("Not able to select an list box element using value");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				

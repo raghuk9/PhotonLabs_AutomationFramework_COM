@@ -37,9 +37,6 @@ public class ComparingOldValue {
 			if ((ActualoldValue + ActualTestData) == ActualNewValue) {
 				System.out.println("Data is changed/added");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					
@@ -50,9 +47,6 @@ public class ComparingOldValue {
 
 			else {
 				System.out.println("Data is not changed/added");
-
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
@@ -113,9 +107,6 @@ public class ComparingOldValue {
 			else {
 				System.out.println("Data is not changed/added");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 					
@@ -123,9 +114,6 @@ public class ComparingOldValue {
 				}
 			}
 		} catch (Exception e) {
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";

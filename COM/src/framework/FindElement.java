@@ -44,10 +44,8 @@ public class FindElement {
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
-				// Status = "Fail";
-				//
-				// Results.results(testCaseno, testCaseDescription, Status,
-				// viewPort, application, startTm, endTm, driver);
+				
+			
 			}
 		}
 

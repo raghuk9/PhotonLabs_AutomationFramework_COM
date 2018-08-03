@@ -26,15 +26,12 @@ public class DataCheckpoint {
 			}
 			Thread.sleep(2000);
 			if (webelement.getText().equals(testData)) {
-				System.out.println(testCaseDescription
-						+ " Displaying correctly as " + webelement.getText());
+				System.out.println(testCaseDescription + " Displaying correctly as " + webelement.getText());
 				
 					Status = "Pass";
 					
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
 				
 			} else {
 				System.out.println(testCaseDescription
@@ -43,8 +40,7 @@ public class DataCheckpoint {
 					Status = "Fail";
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
+				
 				
 			}
 		} catch (Exception e) {
@@ -53,9 +49,6 @@ public class DataCheckpoint {
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-			
 		}
 
 	}
@@ -74,13 +67,8 @@ public class DataCheckpoint {
 			if (element.getText().equals(testData)) {
 				System.out.println(testCaseDescription
 						+ " Displaying correctly as " + element.getText());
-				
-					Status = "Pass";
-					
-					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
+				Status = "Pass";
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				
 			} else {
 				System.out.println(testCaseDescription
@@ -89,9 +77,6 @@ public class DataCheckpoint {
 					Status = "Fail";
 					
 					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
 				
 			}
 		} catch (Exception e) {
@@ -99,9 +84,6 @@ public class DataCheckpoint {
 				Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 			
 		}
 	}

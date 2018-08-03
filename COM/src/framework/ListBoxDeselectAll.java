@@ -30,9 +30,6 @@ public class ListBoxDeselectAll {
 			select.deselectAll();
 			System.out.println("Deselected all items");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
@@ -44,9 +41,6 @@ public class ListBoxDeselectAll {
 		catch(Exception e)
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
