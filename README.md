@@ -1,4 +1,4 @@
-![Photon Logo](http://ww1.prweb.com/prfiles/2015/05/20/12738034/New%20Corporate%20Logo.png)
+![Photon Logo](https://www.photon.in/themes/custom/photon/images/logo.svg)
 # Photon Labs Component Object Model (COM) Automation Framework
 The Photon Labs Component Object Model (COM) Automation Framework is a Functional Automation Framework for 
 * Web Based Applications (Desktop, Tablet and Mobile Optimized Web)
