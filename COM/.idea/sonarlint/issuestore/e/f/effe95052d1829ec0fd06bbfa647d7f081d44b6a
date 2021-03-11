@@ -1,0 +1,34 @@
+
+r	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ8·ŠŸ‚/
+U	java:S106`"9Replace this use of System.out or System.err by a logger.(Ç…·î8·ŠŸ‚/
+U	java:S1062"9Replace this use of System.out or System.err by a logger.(Ç…·î8·ŠŸ‚/
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ8·ŠŸ‚/
+d
+java:S1192"GDefine a constant instead of duplicating this literal "123456" 4 times.(ñŠÿ8øàó‚‚/
+^	java:S107?"=Method has 20 parameters, which is greater than 7 authorized.(ÿ°İÁşÿÿÿÿ8·ŠŸ‚/
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ8·ŠŸ‚/
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ°İÁşÿÿÿÿ8”µŸ‚/
+Z	java:S106)"9Replace this use of System.out or System.err by a logger.(ş”´ëûÿÿÿÿ8·ŠŸ‚/
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¼µ­8·ŠŸ‚/
+e
+java:S1192""IDefine a constant instead of duplicating this literal "TESTSTEP" 6 times.(–Ì§68·ŠŸ‚/
+Z	java:S106M"9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ8·ŠŸ‚/
+^	java:S107"=Method has 20 parameters, which is greater than 7 authorized.(ÿ°İÁşÿÿÿÿ8·ŠŸ‚/
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒäú8·ŠŸ‚/
+o	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ°İÁşÿÿÿÿ8—ÊŸ‚/
+n
+java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(ÿ°İÁşÿÿÿÿ8”µŸ‚/
+n
+java:S1223?"LRename this method to prevent any misunderstanding or make it a constructor.(ÿ°İÁşÿÿÿÿ8—ÊŸ‚/
+H
+java:S1172?"&Remove these unused method parameters.(ÿ°İÁşÿÿÿÿ8·ŠŸ‚/
+H
+java:S1172"&Remove these unused method parameters.(ÿ°İÁşÿÿÿÿ8·ŠŸ‚/
+m
+java:S1192"KDefine a constant instead of duplicating this literal "isEditable" 4 times.(‡¾¡Šşÿÿÿÿ8¶şì‚‚/
+Z	java:S106!"9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ8·ŠŸ‚/
+r	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ8·ŠŸ‚/
+Z	java:S106V"9Replace this use of System.out or System.err by a logger.(ş”´ëûÿÿÿÿ8·ŠŸ‚/
+m	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒäú8·ŠŸ‚/
+\
+java:S1118":Add a private constructor to hide the implicit public one.(û„«²øÿÿÿÿ8·ŠŸ‚/

@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Set;
 
-public class IsEditable {
+public class IsNotEditable {
 
-    public static void IsEditable(String viewPort, String functionality, String driverExecute, String testCaseno,
+    public static void isNotEditable(String viewPort, String functionality, String driverExecute, String testCaseno,
                                    String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
                                    WebDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
                                    String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
@@ -24,9 +24,11 @@ public class IsEditable {
                 String Windowid = driver.getWindowHandle();
                 driver.switchTo().window(Windowid);
             }
+            webelement.click();
             webelement.sendKeys("isEditable");
             webelement.sendKeys("123456");
-            if (webelement.getAttribute("value").equals("isEditable") || webelement.getAttribute("value").equals("123456")) {
+            String value = webelement.getAttribute("value") + webelement.getText();
+            if (!value.equals("isEditable") || !value.equals("123456")) {
                 System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
                 if (report.equalsIgnoreCase("TESTSTEP")) {
                     Status = "Pass";
@@ -35,6 +37,7 @@ public class IsEditable {
 
                 }
             } else {
+                webelement.clear();
                 System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
 
                 if (report.equalsIgnoreCase("TESTSTEP")) {
@@ -57,7 +60,7 @@ public class IsEditable {
     }
 
     @SuppressWarnings("rawtypes")
-    public static void IsEditable(String viewPort, String functionality, String driverExecute, String testCaseno,
+    public static void isNotEditable(String viewPort, String functionality, String driverExecute, String testCaseno,
                                    String testCaseDescription, String testCaseExecute, MobileElement element, String testData, String action,
                                    AppiumDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
                                    String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
@@ -65,9 +68,11 @@ public class IsEditable {
         String Status = null;
         try {
             Thread.sleep(1000);
+            element.click();
             element.sendKeys("isEditable");
             element.sendKeys("123456");
-            if (element.getText().contains("isEditable") || element.getText().contains("123456")) {
+            String value = element.getText();
+            if (!value.contains("isEditable") || !value.contains("123456")) {
                 System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
 
                 if (report.equalsIgnoreCase("TESTSTEP")) {
@@ -77,6 +82,7 @@ public class IsEditable {
 
                 }
             } else {
+                element.clear();
                 System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
 
 
