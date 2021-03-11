@@ -63,6 +63,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+*.idea
+*.iml
 
 # Eclipse Core
 .project
