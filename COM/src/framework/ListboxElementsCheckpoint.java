@@ -15,9 +15,9 @@ public class ListboxElementsCheckpoint {
 										  String functionality, String driverExecute, String testCaseno,
 										  String testCaseDescription, String testCaseExecute,
 										  WebElement webelement, String testData, String action,
-										  WebDriver driver, String oldValue, int j,
+										  WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 										  String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
-			throws IOException, ParseException {
+			throws IOException, ParseException, InterruptedException {
 
 		String Status = null;
 		try {
@@ -59,39 +59,33 @@ public class ListboxElementsCheckpoint {
 			if (counter == List.size()) {
 				System.out.println("All the list items are displaying correctly");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 				}
 
 			} else {
 				System.out.println("All the list items are not displaying correctly");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
+				
 
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 				}
 			}
 		} catch (Exception e) {
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+			
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
 			}
 		}
 	}

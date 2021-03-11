@@ -1,14 +1,16 @@
 package framework;
 
-import com.aventstack.extentreports.ExtentTest;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import java.io.IOException;
+import java.text.ParseException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.io.IOException;
-import java.text.ParseException;
+import com.aventstack.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class FindElement {
 
@@ -17,10 +19,9 @@ public class FindElement {
 			String testCaseno, String testCaseDescription, String application,
 			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
-		String Status = null;
 		WebElement webelement = null;
 
-		if (!viewPort.toUpperCase().equals("APPIUM")) {
+		if (viewPort.toUpperCase().equals("DESKTOP")) {
 			String Windowid = driver.getWindowHandle();
 			driver.switchTo().window(Windowid);
 		}
@@ -43,10 +44,8 @@ public class FindElement {
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
-				// Status = "Fail";
-				//
-				// Results.results(testCaseno, testCaseDescription, Status,
-				// viewPort, application, startTm, endTm, driver);
+				
+			
 			}
 		}
 
@@ -207,18 +206,13 @@ public class FindElement {
 		return webelement;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static MobileElement find_Element(String ObjectIdentifierType,
 			String ObjectIdentifier, AppiumDriver driver, String viewPort,
 			String testCaseno, String testCaseDescription, String application,
 			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
-		String Status = null;
 		MobileElement webelement = null;
-
-		if (!viewPort.toUpperCase().equals("APPIUM")) {
-			String Windowid = driver.getWindowHandle();
-			driver.switchTo().window(Windowid);
-		}
 
 		System.out.println("mobile - came to find element section");
 		if (ObjectIdentifierType.toUpperCase().equals("XPATH")) {

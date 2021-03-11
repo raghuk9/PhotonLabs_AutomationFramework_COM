@@ -1,6 +1,10 @@
 package framework;
 
 import com.aventstack.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -9,58 +13,95 @@ import java.text.ParseException;
 import java.util.Set;
 
 public class TextBox {
-	public void textBox(String viewPort, String functionality,
-						String driverExecute, String testCaseno,
-						String testCaseDescription, String testCaseExecute,
-						WebElement webelement, String testData, String action,
-						WebDriver driver, String oldValue, int j,
-						String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
+	public void textBox(String viewPort, String functionality, String driverExecute, String testCaseno,
+			String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
+			WebDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
+			String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws InterruptedException, IOException, ParseException {
-		
+
 		String Status = null;
 		try {
-			
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
 			}
 
 			Thread.sleep(2000);
 
-			//System.out.println("success");
+			// System.out.println("success");
 			// webelement.click();
-			System.out.println(testCaseno+" Trying to enter " + testData
-					+ " In to the text box ");
-			
-			//webelement.clear();
-			//System.out.println("success");
-			webelement.sendKeys(testData);
+			System.out.println(testCaseno + " Trying to enter " + testData + " In to the text box ");
 
+			// webelement.clear();
+			// System.out.println("success");
+			webelement.sendKeys(testData);
 
 			// extent report for status pass
 			test.pass(testCaseno + " " + testCaseDescription);
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Pass";
-				System.out.println(testCaseno+ " Entered " + testData
-						+ " In to the text box sucessfully");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				System.out.println(testCaseno + " Entered " + testData + " In to the text box sucessfully");
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
+						test, TakeScreenshot);
 			}
-		
+
 		} catch (Exception e) {
 
 			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
+			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
-				System.out.println(testCaseno+" " +
-						"Not able to enter " + testData
-						+ " In to the text box");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				System.out.println(testCaseno + " " + "Not able to enter " + testData + " In to the text box");
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
+						test, TakeScreenshot);
+			}
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void textBox(String viewPort, String functionality,
+			String driverExecute, String testCaseno,
+			String testCaseDescription, String testCaseExecute,
+			MobileElement element, String testData, String action,
+			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test)
+			throws InterruptedException, IOException, ParseException {
+
+		String Status = null;
+		try {
+			Thread.sleep(2000);
+
+			// System.out.println("success");
+			// webelement.click();
+			System.out.println(testCaseno + " Trying to enter " + testData + " In to the text box ");
+
+			// webelement.clear();
+			// System.out.println("success");
+			element.sendKeys(testData);
+
+			// extent report for status pass
+			test.pass(testCaseno + " " + testCaseDescription);
+
+			if (report.toUpperCase().equals("TESTSTEP")) {
+				Status = "Pass";
+				System.out.println(testCaseno + " Entered " + testData + " In to the text box sucessfully");
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
+						test, TakeScreenshot);
+			}
+
+		} catch (Exception e) {
+
+			// extent report for status fail
+			test.fail(testCaseno + " " + testCaseDescription + " ERROR: -- " + e.getMessage());
+
+			if (report.toUpperCase().equals("TESTSTEP")) {
+				Status = "Fail";
+				System.out.println(testCaseno + " " + "Not able to enter " + testData + " In to the text box");
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver,
+						test, TakeScreenshot);
 			}
 		}
 	}

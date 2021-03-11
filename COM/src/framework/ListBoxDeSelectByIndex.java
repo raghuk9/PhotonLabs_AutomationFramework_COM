@@ -13,8 +13,8 @@ public class ListBoxDeSelectByIndex {
 									   String driverExecute, String testCaseno,
 									   String testCaseDescription, String testCaseExecute,
 									   WebElement webelement, String testData, String action,
-									   WebDriver driver, String oldValue, int j,
-									   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+									   WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+									   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		String Status=null;
 		try
@@ -29,15 +29,13 @@ public class ListBoxDeSelectByIndex {
 			select.deselectByIndex(index);
 			System.out.println("De-selected an item from list box  using index");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 			}
 		
 		}
@@ -46,14 +44,11 @@ public class ListBoxDeSelectByIndex {
 		{
 			System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 			}
 		}
 		

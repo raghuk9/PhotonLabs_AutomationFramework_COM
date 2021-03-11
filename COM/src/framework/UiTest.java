@@ -14,8 +14,8 @@ import java.text.ParseException;
 public class UiTest {
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static void uiTest(String functionality, WebElement webelement, WebDriver driver, String ObjectSheetName,
-							  String testCaseno, String testCaseDescription, int j, String report, String viewPort, String application,
-							  String startTm, String endTm, String ObjectIdentifier, ExtentTest test) throws IOException, ParseException {
+							  String testCaseno, String testCaseDescription, int j, String report, String viewPort,String DriverToInvoke, String TakeScreenshot, String application,
+							  String startTm, String endTm, String ObjectIdentifier, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String Status = null;
 		String endTime = null;
 		try {
@@ -62,9 +62,8 @@ public class UiTest {
 					if (webelement.isDisplayed()) {
 						System.out.println(testCaseDescription + "--PASS");
 						Status = "Pass";
-						Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
-								driver);
-
+						Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+								application, driver, test, TakeScreenshot);
 						// extent report for status pass
 						test.pass(testCaseno + " " + testCaseDescription);
 
@@ -73,8 +72,8 @@ public class UiTest {
 					} else {
 						System.out.println(testCaseDescription + "--FAIL");
 						Status = "Fail";
-						Results.results(testCaseno, testCaseDescription, Status,
-								viewPort, application, startTm, endTm, driver);
+						Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+								application, driver, test, TakeScreenshot);
 
 						// extent report for status fail
 						test.fail(testCaseno + " " + testCaseDescription);
@@ -84,8 +83,8 @@ public class UiTest {
 					System.out.println("Object not found in the object sheet");
 					System.out.println(testCaseDescription + "--FAIL");
 					Status = "Fail";
-					Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
-							driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+							application, driver, test, TakeScreenshot);
 
 					// extent report for status fail
 					test.fail(testCaseno + " " + testCaseDescription);
@@ -121,8 +120,8 @@ public class UiTest {
 			// This is to execute when the object does not exist on the screen
 			System.out.println(testCaseDescription + "--FAIL OBJ DOES NOT EXISTS ON THE SCREEN");
 			Status = "Fail";
-			Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm, driver);
-
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status,
+					application, driver, test, TakeScreenshot);
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
 

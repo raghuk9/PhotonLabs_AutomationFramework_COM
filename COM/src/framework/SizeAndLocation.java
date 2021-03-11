@@ -24,7 +24,7 @@ public class SizeAndLocation {
 
 	public static Set<String> sizeAndLocation(String viewPort, String functionality, String driverExecute,
 			String testCaseno, String testCaseDescription, String testCaseExecute, WebElement webelement,
-			String testData, String action, WebDriver driver, String oldValue, int j, String report, String application,
+			String testData, String action, WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j, String report, String application,
 			String startTm, String endTm, Set<String> windowhandles, String ObjectSheetName, String objectIdentifier, ExtentTest test)
 			throws IOException, ParseException, Exception {
 		String Status = null;
@@ -57,19 +57,19 @@ public class SizeAndLocation {
 						&& YES_VALUE.equalsIgnoreCase(objectSheet.getCellAt(3, i).getTextValue())
 						&& (ObjXpath.length() != 0) && (ObjXpath.equals(objectIdentifier))) {
 					deskTopSuccessFailureResult(viewPort, testCaseno, testCaseDescription, webelement, driver,
-							application, startTm, endTm, dimesion, point, objectSheet, i, test);
+							application, startTm, endTm, dimesion, point, objectSheet,DriverToInvoke,  TakeScreenshot, i, test);
 				} else if (DEVICE_TABLET.equalsIgnoreCase(viewPort)
 						&& YES_VALUE.equalsIgnoreCase(objectSheet.getCellAt(8, i).getTextValue())
 						&& (ObjXpath.length() != 0) && (ObjXpath.equals(objectIdentifier))) {
 					 tabletSuccessFailureResult(viewPort, testCaseno,
 					 testCaseDescription, webelement, driver,
 					 application, startTm, endTm, dimesion, point,
-					 objectSheet, i, test);
+					 objectSheet, DriverToInvoke,  TakeScreenshot, i, test);
 				} else if (DEVICE_MOBILE.equalsIgnoreCase(viewPort)
 						&& YES_VALUE.equalsIgnoreCase(objectSheet.getCellAt(13, i).getTextValue())
 						&& (ObjXpath.length() != 0) && (ObjXpath.equals(objectIdentifier))) {
 					mobileSuccessFailureResult(viewPort, testCaseno, testCaseDescription, webelement, driver,
-							application, startTm, endTm, dimesion, point, objectSheet, i, test);
+							application, startTm, endTm, dimesion, point, objectSheet,DriverToInvoke,  TakeScreenshot, i, test);
 				}
 				// else if (i == objectSheet.getRowCount()) {
 				// System.out.println("Object not found in the object sheet");
@@ -88,7 +88,7 @@ public class SizeAndLocation {
 			// if ("TESTSTEP".equalsIgnoreCase(report)) {
 			// Status = "Pass";
 			// Results.results(testCaseno, testCaseDescription, Status,
-			// viewPort, application, startTm, endTm, driver);
+			// viewPort, application, startTm, endTm, driver,test);
 			// }
 
 			// extent report for status pass
@@ -103,8 +103,7 @@ public class SizeAndLocation {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = STATUS_FAIL;
 				try {
-					Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
-							driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				} catch (Exception ex) {
 					System.out.println("Exception occured at SizeAndLocation whille calling Results.results");
 					ex.printStackTrace();
@@ -116,7 +115,7 @@ public class SizeAndLocation {
 
 	private static void deskTopSuccessFailureResult(String viewPort, String testCaseno, String testCaseDescription,
 			WebElement webelement, WebDriver driver, String application, String startTm, String endTm,
-			Dimension dimesion, Point point, Sheet objectSheet, int i, ExtentTest test) throws IOException, ParseException {
+			Dimension dimesion, Point point, Sheet objectSheet, String DriverToInvoke, String TakeScreenshot,int i, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String status = STATUS_FAIL;
 		int desktopXcoordinate = Integer.parseInt(objectSheet.getCellAt(4, i).getTextValue());
 		int desktopYCoordinate = Integer.parseInt(objectSheet.getCellAt(5, i).getTextValue());
@@ -127,15 +126,14 @@ public class SizeAndLocation {
 				&& desktopWidth == dimesion.width && desktopHeight == dimesion.height) {
 			System.out.println(testCaseDescription + "--PASS");
 			status = STATUS_PASS;
-			Results.results(testCaseno, testCaseDescription, status, viewPort, application, startTm, endTm, driver);
-
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, status, application, driver, test, TakeScreenshot);
 			// extent report for status pass
 			test.pass(testCaseno + " " + testCaseDescription);
 
 		} else {
 			System.out.println(testCaseDescription + "--FAIL");
 			status = STATUS_FAIL;
-			Results.results(testCaseno, testCaseDescription, status, viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, status, application, driver, test, TakeScreenshot);
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription);
@@ -144,7 +142,7 @@ public class SizeAndLocation {
 
 	private static void tabletSuccessFailureResult(String viewPort, String testCaseno, String testCaseDescription,
 			WebElement webelement, WebDriver driver, String application, String startTm, String endTm,
-			Dimension dimesion, Point point, Sheet objectSheet, int i, ExtentTest test) throws IOException, ParseException {
+			Dimension dimesion, Point point, Sheet objectSheet,String DriverToInvoke, String TakeScreenshot, int i, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String status;
 		int tabletXcoordinate = Integer.parseInt(objectSheet.getCellAt(9, i).getTextValue());
 		int tabletYCoordinate = Integer.parseInt(objectSheet.getCellAt(10, i).getTextValue());
@@ -155,7 +153,7 @@ public class SizeAndLocation {
 				&& tabletWidth == dimesion.width && tabletHeight == dimesion.height) {
 			System.out.println(testCaseDescription + "--PASS");
 			status = STATUS_PASS;
-			Results.results(testCaseno, testCaseDescription, status, viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, status, application, driver, test, TakeScreenshot);
 
 			// extent report for status pass
 			test.pass(testCaseno + " " + testCaseDescription);
@@ -163,7 +161,7 @@ public class SizeAndLocation {
 		} else {
 			System.out.println(testCaseDescription + "--FAIL");
 			status = STATUS_FAIL;
-			Results.results(testCaseno, testCaseDescription, status, viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, status, application, driver, test, TakeScreenshot);
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription);
@@ -172,7 +170,7 @@ public class SizeAndLocation {
 
 	private static void mobileSuccessFailureResult(String viewPort, String testCaseno, String testCaseDescription,
 			WebElement webelement, WebDriver driver, String application, String startTm, String endTm,
-			Dimension dimesion, Point point, Sheet objectSheet, int i, ExtentTest test) throws IOException, ParseException {
+			Dimension dimesion, Point point, Sheet objectSheet,String DriverToInvoke, String TakeScreenshot, int i, ExtentTest test) throws IOException, ParseException, InterruptedException {
 		String Status;
 		int mobileXcoordinate = Integer.parseInt(objectSheet.getCellAt(14, i).getTextValue());
 		int mobileYCoordinate = Integer.parseInt(objectSheet.getCellAt(15, i).getTextValue());
@@ -183,7 +181,7 @@ public class SizeAndLocation {
 				&& mobileWidth == dimesion.width && mobileHeight == dimesion.height) {
 			System.out.println(testCaseDescription + "--PASS");
 			Status = STATUS_PASS;
-			Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			// extent report for status pass
 			test.pass(testCaseno + " " + testCaseDescription);
@@ -191,7 +189,7 @@ public class SizeAndLocation {
 		} else {
 			System.out.println(testCaseDescription + "--FAIL");
 			Status = STATUS_FAIL;
-			Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription);
@@ -209,7 +207,7 @@ public class SizeAndLocation {
 
 	public static Set<String> sizeAndLocation(String viewPort, String functionality, String driverExecute,
 											  String testCaseno, String testCaseDescription, String testCaseExecute, MobileElement element,
-											  String testData, String action, AppiumDriver driver, String oldValue, int j, String report,
+											  String testData, String action, AppiumDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j, String report,
 											  String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException {
 		String Status = null;
@@ -244,7 +242,8 @@ public class SizeAndLocation {
 
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = STATUS_PASS;
-				Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 			}
 		} catch (Exception e) {
 
@@ -255,8 +254,8 @@ public class SizeAndLocation {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = STATUS_FAIL;
 				try {
-					Results.results(testCaseno, testCaseDescription, Status, viewPort, application, startTm, endTm,
-							driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 				} catch (Exception ex) {
 					System.out.println("Exception occured at SizeAndLocation whille calling Results.results");
 					ex.printStackTrace();

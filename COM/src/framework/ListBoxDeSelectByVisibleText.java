@@ -13,8 +13,8 @@ public class ListBoxDeSelectByVisibleText {
 										   String driverExecute, String testCaseno,
 										   String testCaseDescription, String testCaseExecute,
 										   WebElement webelement, String testData, String action,
-										   WebDriver driver, String oldValue, int j,
-										   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+										   WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+										   String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		String Status=null;
 		try
@@ -29,15 +29,12 @@ public class ListBoxDeSelectByVisibleText {
 			select.deselectByVisibleText(testData);
 			System.out.println("Deselected an item from list box  using visible text");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
-			if (report.toUpperCase().equals("TESTSTEP")) {
+		if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 			}
 		}
 		
@@ -46,14 +43,11 @@ public class ListBoxDeSelectByVisibleText {
 		{
 			System.out.println("Not able to deselect an list box element using visible text--ERROR");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 			}
 		}
 	}

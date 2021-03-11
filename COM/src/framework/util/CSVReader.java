@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 public class CSVReader {
 	private static final String COMMA_SEPARATOR = ",";
 
-	public ResultVO readFromCSVFile(String fileName) {
+	public ResultVO breadFromCSVFile(String fileName) {
 		ResultVO resultVO = new ResultVO();
 		BufferedReader bufferedReader = null;
 		try {

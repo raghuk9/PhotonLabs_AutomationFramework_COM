@@ -15,8 +15,8 @@ public class TextColorCheckpoint {
 									String driverExecute, String testCaseno,
 									String testCaseDescription, String testCaseExecute,
 									WebElement webelement, String testData, String action,
-									WebDriver driver, String oldValue, int j,
-									String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+									WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+									String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		
 		
@@ -36,21 +36,21 @@ public class TextColorCheckpoint {
 			String[] rgbvalues=values[1].split(",");
 			int r=Integer.parseInt(rgbvalues[0].trim());
 			int g=Integer.parseInt(rgbvalues[1].trim());
-			int b=Integer.parseInt(rgbvalues[2].trim());
+			int b=Integer.parseInt(rgbvalues[2].replace(")", "").trim());
 			System.out.println(r+" "+g+" "+b);
 			
 			Color newcolor=new Color(r, g, b);
 			
 			String hexcode="#"+Integer.toHexString(newcolor.getRGB()).substring(2);
-			System.out.println(hexcode);
+			System.out.println(hexcode);				
 			
-			if(hexcode.equals(testData))
+			if(hexcode.equalsIgnoreCase(testData))
 			{
 				System.out.println(testCaseno+" "+testCaseDescription+"Color is matching");
 				Status = "Pass";
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status pass
 				test.pass(testCaseno + " " + testCaseDescription);
@@ -60,8 +60,8 @@ public class TextColorCheckpoint {
 				System.out.println(testCaseno+" "+testCaseDescription+"Color is not matching");
 				Status = "Fail";
 
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 				// extent report for status fail
 				test.fail(testCaseno + " " + testCaseDescription);
@@ -74,8 +74,8 @@ public class TextColorCheckpoint {
 			System.out.println(testCaseno+" "+testCaseDescription+"not able to find the Color");
 			Status = "Fail";
 
-			Results.results(testCaseno, testCaseDescription, Status,
-					viewPort, application, startTm, endTm, driver);
+			Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 
 			// extent report for status fail
 			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());

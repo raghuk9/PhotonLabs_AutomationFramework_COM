@@ -15,15 +15,14 @@ public class ComparingOldValue {
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			WebElement webelement, String testData, String action,
-			WebDriver driver,  String oldValue, int j,
+			WebDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws InterruptedException,
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
+			if (viewPort.toUpperCase().equals("DESKTOP")) {
 				String Windowid = driver.getWindowHandle();
 				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
 			}
 			Thread.sleep(4000);
 			String NewValue = webelement.getText();
@@ -38,14 +37,10 @@ public class ComparingOldValue {
 			if ((ActualoldValue + ActualTestData) == ActualNewValue) {
 				System.out.println("Data is changed/added");
 
-				// extent report for status pass
-				test.pass(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				}
 			}
@@ -53,14 +48,10 @@ public class ComparingOldValue {
 			else {
 				System.out.println("Data is not changed/added");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 				}
 			}
@@ -72,27 +63,23 @@ public class ComparingOldValue {
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			}
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void comparingOldValue(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
 			MobileElement element, String testData, String action,
-			AppiumDriver driver,  String oldValue, int j,
+			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws InterruptedException,
 			IOException, ParseException {
 		String Status = null;
 		try {
-			if (!viewPort.toUpperCase().equals("APPIUM")) {
-				String Windowid = driver.getWindowHandle();
-				driver.switchTo().window(Windowid);
-				//windowhandles.add(Windowid);
-			}
+			
 			Thread.sleep(4000);
 			String NewValue = element.getText();
 			System.out.println("text from app is...."+NewValue);
@@ -113,34 +100,25 @@ public class ComparingOldValue {
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Pass";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				}
 			}
 
 			else {
 				System.out.println("Data is not changed/added");
 
-				// extent report for status fail
-				test.fail(testCaseno + " " + testCaseDescription);
-
 				if (report.toUpperCase().equals("TESTSTEP")) {
 					Status = "Fail";
 					
-					Results.results(testCaseno, testCaseDescription, Status,
-							viewPort, application, startTm, endTm, driver);
+					Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 				}
 			}
 		} catch (Exception e) {
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				System.out.println(testCaseno+" "+testCaseDescription+" --ERROR");
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 			}
 		}
 	}	

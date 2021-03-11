@@ -14,8 +14,8 @@ public class ListBoxSelectByValue {
 									 String driverExecute, String testCaseno,
 									 String testCaseDescription, String testCaseExecute,
 									 WebElement webelement, String testData, String action,
-									 WebDriver driver, String oldValue, int j,
-									 String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException
+									 WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
+									 String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	{
 		String Status=null;
 		try
@@ -30,15 +30,13 @@ public class ListBoxSelectByValue {
 			select.selectByValue(testData);
 			System.out.println("Selected an item from list box  using Value");
 
-			// extent report for status pass
-			test.pass(testCaseno + " " + testCaseDescription);
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 
 				Status = "Pass";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
+
 			}
 		}
 		
@@ -47,14 +45,11 @@ public class ListBoxSelectByValue {
 		{
 			System.out.println("Not able to select an list box element using value");
 
-			// extent report for status fail
-			test.fail(testCaseno + " " + testCaseDescription+ " ERROR: -- " + e.getMessage());
-
+		
 			if (report.toUpperCase().equals("TESTSTEP")) {
 				Status = "Fail";
 				
-				Results.results(testCaseno, testCaseDescription, Status,
-						viewPort, application, startTm, endTm, driver);
+				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
 
 			}
 		}
