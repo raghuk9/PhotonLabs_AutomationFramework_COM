@@ -1,32 +1,0 @@
-
-^
-java:S1192!"IDefine a constant instead of duplicating this literal "TESTSTEP" 6 times.(–Ì§6
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ
-S	java:S106V"9Replace this use of System.out or System.err by a logger.(ş”´ëûÿÿÿÿ
-N	java:S106`"9Replace this use of System.out or System.err by a logger.(Ç…·î
-S	java:S106L"9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ
-h	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ°İÁşÿÿÿÿ
-]
-java:S1192"GDefine a constant instead of duplicating this literal "123456" 4 times.(ñŠÿ
-k	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ
-f
-java:S1192"KDefine a constant instead of duplicating this literal "isEditable" 4 times.(‡¾¡Šşÿÿÿÿ
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒäú
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¼µ­
-U
-java:S1118":Add a private constructor to hide the implicit public one.(ñ–êÀıÿÿÿÿ
-W	java:S107"=Method has 20 parameters, which is greater than 7 authorized.(ë¥Ÿåÿÿÿÿÿ
-A
-java:S1172?"&Remove these unused method parameters.(ÿ°İÁşÿÿÿÿ
-A
-java:S1172"&Remove these unused method parameters.(ë¥Ÿåÿÿÿÿÿ
-n
-java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(ë¥Ÿåÿÿÿÿÿ8¶®†ƒ‚/
-k	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ
-W	java:S107?"=Method has 20 parameters, which is greater than 7 authorized.(ÿ°İÁşÿÿÿÿ
-h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë¥Ÿåÿÿÿÿÿ
-S	java:S106)"9Replace this use of System.out or System.err by a logger.(ş”´ëûÿÿÿÿ
-f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒäú
-N	java:S1062"9Replace this use of System.out or System.err by a logger.(Ç…·î
-S	java:S106 "9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ

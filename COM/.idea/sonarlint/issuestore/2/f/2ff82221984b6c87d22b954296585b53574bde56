@@ -1,16 +1,0 @@
-
-R	java:S107"=Method has 20 parameters, which is greater than 7 authorized.(’Æšü
-R	java:S107/"=Method has 20 parameters, which is greater than 7 authorized.(’Æšü
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì×¡Àÿÿÿÿÿ
-k	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ
-k	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”éø†ùÿÿÿÿ
-f	java:S116"QRename this field "Status" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒäú
-<
-java:S1172"&Remove these unused method parameters.(’Æšü
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ
-S	java:S106$"9Replace this use of System.out or System.err by a logger.(¡‹µêüÿÿÿÿ
-S	java:S106&"9Replace this use of System.out or System.err by a logger.(©þêÜúÿÿÿÿ
-S	java:S1068"9Replace this use of System.out or System.err by a logger.(Œä•‡üÿÿÿÿ
-S	java:S106?"9Replace this use of System.out or System.err by a logger.(¡‹µêüÿÿÿÿ
-S	java:S106A"9Replace this use of System.out or System.err by a logger.(©þêÜúÿÿÿÿ
