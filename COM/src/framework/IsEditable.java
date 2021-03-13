@@ -24,28 +24,48 @@ public class IsEditable {
                 String Windowid = driver.getWindowHandle();
                 driver.switchTo().window(Windowid);
             }
-            webelement.click();
-            webelement.sendKeys("isEditable");
-            webelement.sendKeys("123456");
-            String value = webelement.getAttribute("value") + webelement.getText();
-            if (value.contains("isEditable") || value.contains("123456")) {
-                webelement.clear();
-                System.out.println(testCaseno + " " + testCaseDescription + " --Pass");
-                if (report.equalsIgnoreCase("TESTSTEP")) {
-                    Status = "Pass";
-                    Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
-                            driver, test, TakeScreenshot);
+            String value = webelement.getAttribute("disabled");
+            if(value==null){
+                webelement.click();
+                webelement.sendKeys("isEditable");
+                webelement.sendKeys("123456");
+                value = webelement.getAttribute("value") + webelement.getText();
+                if (value.contains("isEditable") || value.contains("123456")) {
+                    webelement.clear();
+                    System.out.println(testCaseno + " " + testCaseDescription + " -- Passed");
+                    if (report.equalsIgnoreCase("TESTSTEP")) {
+                        Status = "Pass";
+                        Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
+                                driver, test, TakeScreenshot);
 
+                    }
+                } else {
+                    System.out.println(testCaseno + " " + testCaseDescription + " -- Failed");
+
+                    if (report.equalsIgnoreCase("TESTSTEP")) {
+                        Status = "Fail";
+                        Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
+                                driver, test, TakeScreenshot);
+                    }else {
+                        test.fail(testCaseno + " " + testCaseDescription);
+                    }
                 }
-            } else {
-                System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
+            }else {
+                if(value.equals("true")){
+                    System.out.println(testCaseno + " " + testCaseDescription + " --Passed");
+                    if (report.equalsIgnoreCase("TESTSTEP")) {
+                        Status = "Fail";
+                        Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
+                                driver, test, TakeScreenshot);
+                    }
+                    test.pass(testCaseno + " " + testCaseDescription);
+                }else{
+                    if (report.equalsIgnoreCase("TESTSTEP")) {
+                        Status = "Pass";
+                        Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
+                                driver, test, TakeScreenshot);
 
-                if (report.equalsIgnoreCase("TESTSTEP")) {
-                    Status = "Fail";
-                    Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
-                            driver, test, TakeScreenshot);
-                }else {
-                    test.fail(testCaseno + " " + testCaseDescription);
+                    }
                 }
             }
         } catch (Exception e) {

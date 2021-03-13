@@ -15,7 +15,7 @@ public class Maximize {
 						 String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
 						 WebDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j, String report, String application, String startTm, String endTm,
 						 Set<String> windowhandles, ExtentTest test) throws InterruptedException, IOException, ParseException {
-		String Status = null;
+		String Status;
 		try {
 			Thread.sleep(1000);
 			driver.manage().window().maximize();
@@ -25,11 +25,9 @@ public class Maximize {
 
 		} catch (Exception e) {
 			System.out.println(testCaseno + " " + testCaseDescription + " --Failed");
-			if (report.toUpperCase().equals("TESTSTEP")) {
+			if (report.equalsIgnoreCase("TESTSTEP")) {
 				Status = "Fail";
 				Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application, driver, test, TakeScreenshot);
-
-				
 			}
 		}
 	}
