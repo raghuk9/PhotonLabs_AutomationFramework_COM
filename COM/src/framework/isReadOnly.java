@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.util.Set;
 
 public class isReadOnly {
-
     public static void isReadOnly(String viewPort, String functionality, String driverExecute, String testCaseno,
                                    String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
                                    WebDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
@@ -39,7 +38,6 @@ public class isReadOnly {
                     Status = "Pass";
                     Results.results(viewPort, DriverToInvoke, testCaseno, testCaseDescription, Status, application,
                             driver, test, TakeScreenshot);
-
                 }
                 
             }
@@ -53,7 +51,6 @@ public class isReadOnly {
             }
         }
     }
-
     @SuppressWarnings("rawtypes")
     public static void isReadOnly(String viewPort, String functionality, String driverExecute, String testCaseno,
                                    String testCaseDescription, String testCaseExecute, MobileElement element, String testData, String action,
@@ -67,7 +64,7 @@ public class isReadOnly {
                 String Windowid = driver.getWindowHandle();
                 driver.switchTo().window(Windowid);
             }
-            String value = webelement.getAttribute("readonly");
+            String value = element.getAttribute("readonly");
             if(value==null) {
                 System.out.println(testCaseno + " " + testCaseDescription + " -- Failed");
                 if (report.equalsIgnoreCase("TESTSTEP")) {
