@@ -22,6 +22,40 @@ public class isEnabled {
 	        String Status = null;
 	        try {
 	            Thread.sleep(1000);
+	          // Declaring a local variable of type "WebElement" to initialize the
+	         // value of the webElement (checkboxOne) and webElement (checkboxTwo)
+	         WebElement checkboxOneEX = driver.findElement(By.id("checkboxOneid"));
+	         WebElement checkboxTwoEX = driver.findElement(By.id("checkboxTwoid"));
+
+	        
+	         (new WebDriverWait(driver, 30)).until(ExpectedConditions
+	         .elementToBeClickable(checkboxOneEX));
+
+	         // Declaring a local variable of type "Boolean" to initialize the
+	         // value of the webElement (checkboxOneid) and webElement (checkboxTwoid)
+	         // Using the isSelected method we check if the check box is selected or
+	         // not.
+	         Boolean checkboxone = checkboxOneEX.isSelected();
+	         Boolean checkboxtwo = checkboxTwoEX.isSelected();
+
+	         // use an if condition to check if boolean returned false
+	         // If false then it was not selected
+	         // click and select the checkbox
+	         if (checkboxone == false) {
+	         checkboxOneEX.click();
+	         System.out.println("Test has selected Selenium checkbox");
+	         } else {
+	         System.out.println("Selenium checkbox was selected on default");
+	         }
+
+	         // Repeat the process for checkboxTwo
+	         if (checkboxtwo == false) {
+	         checkboxTwoEX.click();
+	         System.out.println("Test has selected Rest api checkbox");
+	         } else {
+	         System.out.println("Rest Api checkbox was selected on default");
+	         }
+	           	            
 	            WebElement saveButton = driver.findElement(By.id(""));
 	            Boolean checkSaveIsDisplayed = saveButton.isDisplayed();
 
@@ -34,7 +68,7 @@ public class isEnabled {
 	            System.out.println("Button is not enabled");
 	            }
 
-	            // Click on a radio button then check if the save button is  enabled
+	            // Click on a radio button then check if the save button is now enabled
 
 	            WebElement radioButton = driver.findElement(By.id(""));
 
@@ -69,7 +103,8 @@ public class isEnabled {
 	                        test.fail(testCaseno + " " + testCaseDescription);
 	                    }
 	                }
-			
+				
+		
 	        } catch (Exception e) {
 	            System.out.println(testCaseno + " " + testCaseDescription + " --Unexpected error");
 
@@ -84,10 +119,10 @@ public class isEnabled {
 	    }
 
 	    @SuppressWarnings("rawtypes")
-	    public static void isEditable(String viewPort, String functionality, String driverExecute, String testCaseno,
-	                                   String testCaseDescription, String testCaseExecute, MobileElement element, String testData, String action,
-	                                   AppiumDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
-	                                   String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
+	    public isEnabled(final String viewPort, final String functionality, final String driverExecute, final String testCaseno,
+	                                   final String testCaseDescription, final String testCaseExecute, final MobileElement element, final String testData, final String action,
+	                                   final AppiumDriver driver, final String oldValue, final String DriverToInvoke, final String TakeScreenshot, final int j, final String report,
+	                                   final String application, final String startTm, final String endTm, final Set<String> windowhandles, final ExtentTest test)
 	            throws IOException, ParseException, InterruptedException {
 	        String Status = null;
 	        try {
@@ -104,7 +139,7 @@ public class isEnabled {
 	            System.out.println("Button is not enabled");
 	            }
 
-	            // Click on a radio button then check if the save button is enabled
+	            // Click on a radio button then check if the save button is now enabled
 
 	            WebElement radioButton = driver.findElement(By.id(""));
 
