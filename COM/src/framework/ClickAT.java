@@ -22,6 +22,7 @@ public class ClickAT {
 		
 		String Status = null;
 		String Windowid=null;
+
 		try {
 			Thread.sleep(1000);
 			if (viewPort.toUpperCase().equals("DESKTOP")) {
@@ -29,14 +30,25 @@ public class ClickAT {
 				driver.switchTo().window(Windowid);
 			}
 			System.out.println("statrted analysing the xand y");
-			
-			String a [] = testData.split(",");
-	        int x = Integer.parseInt(a[0]);
-	        int y = Integer.parseInt(a[1]);
-				        
-	        Actions builder = new Actions(driver);   
+			System.out.println("TestData Value is: " +testData);
+			String[] a;
+			System.out.println("Initialized String Array");
+			a = testData.split(",");
+			System.out.println("Assigned values to Array");
+			int x = Integer.parseInt(a[0]);
+			System.out.println("Value of a[0]: " +a[0]);
+			System.out.println("Value of x: " +x);
+			int y = Integer.parseInt(a[1]);
+			System.out.println("Value of a[1]: " +a[1]);
+			System.out.println("Value of y: " +y);
+
+			//new Actions(driver).moveByOffset(x,y).click().build().perform();
+
+			Actions builder = new Actions(driver);
 	        builder.moveByOffset(x,y).click().perform();
-	       
+	        builder.moveByOffset(0,0);
+	        //builder.moveByOffset(0,0).click().perform();
+
 	        System.out.println("Xvalue is:" +x);
 	        System.out.println("Yvalue is:" +y);
 					
