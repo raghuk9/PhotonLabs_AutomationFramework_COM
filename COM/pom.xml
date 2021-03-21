@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>NewCOM23</groupId>
-	<artifactId>NewCOM23</artifactId>
-	<version>0.0.1</version>
+	<artifactId>COMv2021</artifactId>
+	<version>2021.03.21</version>
 	<name>PhotonLabs_AutomationFramework_COM</name>
 	<properties>
 		<java.version>8</java.version>
