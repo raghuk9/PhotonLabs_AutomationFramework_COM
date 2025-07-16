@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+
 
 public class FindElement {
 
@@ -207,19 +207,19 @@ public class FindElement {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static MobileElement find_Element(String ObjectIdentifierType,
+	public static WebElement find_Element(String ObjectIdentifierType,
 			String ObjectIdentifier, AppiumDriver driver, String viewPort,
 			String testCaseno, String testCaseDescription, String application,
 			String startTm, String endTm, ExtentTest test) throws IOException, ParseException {
 
-		MobileElement webelement = null;
+		WebElement webelement = null;
 
 		System.out.println("mobile - came to find element section");
 		if (ObjectIdentifierType.toUpperCase().equals("XPATH")) {
 			try {
 				System.out.println(testCaseno
 						+ " Trying to identify mobile object using XPATH started...");
-				webelement = (MobileElement) driver.findElement(By.xpath(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.xpath(ObjectIdentifier));
 				System.out.println(testCaseno
 						+ " Identification of mobile object using XPATH is done");
 			} catch (Exception e) {
@@ -242,7 +242,7 @@ public class FindElement {
 				System.out.println("mobile - came to name sections");
 				System.out.println(testCaseno
 						+ " Trying to identify mobie object using Name  started...");
-				webelement = (MobileElement) driver.findElement(By.name(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.name(ObjectIdentifier));
 				System.out
 						.println(testCaseno
 								+ " Identification of mobile object using Name selector is done");
@@ -267,7 +267,7 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Trying to identify mobile object using link text  started...");
-				webelement = (MobileElement) driver.findElement(By.linkText(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.linkText(ObjectIdentifier));
 				System.out
 						.println(testCaseno
 								+ " Identification of mobile object using linktext selector is done");
@@ -292,7 +292,7 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Trying to identify mobile object using CSS selector started...");
-				webelement = (MobileElement) driver.findElement(By
+				webelement = (WebElement) driver.findElement(By
 						.cssSelector(ObjectIdentifier));
 				System.out
 						.println(testCaseno
@@ -314,7 +314,7 @@ public class FindElement {
 			try {
 				System.out.println(testCaseno
 						+ " Trying to mobile identify object using ID started...");
-				webelement = (MobileElement) driver.findElement(By.id(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.id(ObjectIdentifier));
 				System.out.println(testCaseno
 						+ " Identification of object using ID is done");
 			} catch (Exception e) {
@@ -332,7 +332,7 @@ public class FindElement {
 			try {
 				System.out.println(testCaseno
 						+ " Trying to identify mobile object using TAG started...");
-				webelement = (MobileElement) driver.findElement(By.tagName(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.tagName(ObjectIdentifier));
 				System.out.println(testCaseno
 						+ " Identification of mobile object using TAG is done");
 			} catch (Exception e) {
@@ -351,7 +351,7 @@ public class FindElement {
 				System.out
 						.println(testCaseno
 								+ " Trying to identify mobile object using CLASS name started...");
-				webelement = (MobileElement) driver.findElement(By.className(ObjectIdentifier));
+				webelement = (WebElement) driver.findElement(By.className(ObjectIdentifier));
 				System.out.println(testCaseno
 						+ " Identification of object mobile using CLASS name is done");
 			} catch (Exception e) {

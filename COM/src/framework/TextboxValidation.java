@@ -3,7 +3,6 @@ package framework;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 
 import java.util.Set;
 
@@ -84,7 +83,7 @@ public class TextboxValidation {
 	public void textboxValidation(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
-			MobileElement element, String testData, String action,
+			WebElement element, String testData, String action,
 			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) {
 

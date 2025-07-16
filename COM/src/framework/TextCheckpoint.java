@@ -3,7 +3,6 @@ package framework;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -71,7 +70,7 @@ public class TextCheckpoint {
 	public void textCheckpoint(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
-			MobileElement element, String testData, String action,
+			WebElement element, String testData, String action,
 			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException, InterruptedException {

@@ -14,12 +14,13 @@ import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+
 
 @SuppressWarnings("unused")
 public class Main {
@@ -50,11 +51,11 @@ public class Main {
 		String functionalitySheetName = null;
 		String endTm = null;
 		WebElement webelement = null;
-		MobileElement mobileelement = null;
+		WebElement mobileelement = null;
 		int counter = 0;
 		String oldValue = null;
 		WebDriver driver = null;
-		AppiumDriver appiumdriver = null;
+		RemoteWebDriver appiumdriver = null;
 
 		try {
 			File ff = new File("DriverSheet.ods");
@@ -150,6 +151,7 @@ public class Main {
 
 				String sheetname = viewPort + "Sheet";
 				System.out.println("sheetname = " + sheetname);
+				driverExecute="YES";
 				if (YES_VALUE.equalsIgnoreCase(driverExecute)) {
 					// Report_Header reportHeader = new Report_Header();
 					// reportHeader.report_Header(viewPort, application);
@@ -316,7 +318,7 @@ public class Main {
 								par[19] = ExtentTest.class;
 								if (DriverToInvoke.toUpperCase().equals(APPIOS)
 										|| DriverToInvoke.toUpperCase().equals(APPAND)) {
-									par[6] = MobileElement.class;
+									par[6] = WebElement.class;
 									par[9] = AppiumDriver.class;
 								} else {
 									par[6] = WebElement.class;

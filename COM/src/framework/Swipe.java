@@ -2,8 +2,7 @@ package framework;
 
 import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
+import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
@@ -13,13 +12,15 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.util.Set;
 
+import org.openqa.selenium.WebElement;
+
 
 public class Swipe {
 	
 		public static Set<String>  swipe(String viewPort, String functionality,
 										 String driverExecute, String testCaseno,
 										 String testCaseDescription, String testCaseExecute,
-										 MobileElement element, String testData, String action,
+										 WebElement element, String testData, String action,
 										 AppiumDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 										 String report, String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	
@@ -40,7 +41,7 @@ public class Swipe {
 //			MobileDriver mdriver = null;
 			@SuppressWarnings("rawtypes")
 	    
-			TouchAction action1 = new TouchAction(driver);
+			TouchAction action1 = new TouchAction((PerformsTouchActions) driver);
 			
 			action1.press(PointOption.point(300,152))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))

@@ -3,8 +3,9 @@ package framework;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +49,7 @@ public class BackButton {
 	public void backButton(String viewPort, String functionality,
 			String driverExecute, String testCaseno,
 			String testCaseDescription, String testCaseExecute,
-			MobileElement element, String testData, String action,
+			WebElement element, String testData, String action,
 			AppiumDriver driver,  String oldValue,String DriverToInvoke, String TakeScreenshot, int j,
 			String report, String application,String startTm,String endTm,Set<String> windowhandles, ExtentTest test) throws IOException, ParseException, InterruptedException
 	
@@ -56,7 +57,7 @@ public class BackButton {
 		String Status = null;
 		try {
 			System.out.println("Device Back Button Click");
-			((AndroidDriver)driver).pressKeyCode(4);
+			((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.DIGIT_4));
 			Thread.sleep(3000);
 			
 			System.out.println(testCaseno+" "+testCaseDescription);

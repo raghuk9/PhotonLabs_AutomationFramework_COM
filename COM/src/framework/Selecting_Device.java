@@ -3,8 +3,12 @@ package framework;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,11 +22,12 @@ import org.testng.TestNG;
 import org.testng.collections.Lists;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.MobileCapabilityType;
+
 import io.appium.java_client.remote.MobilePlatform;
 
 public class Selecting_Device {
@@ -40,41 +45,56 @@ public class Selecting_Device {
 	private static final String BROWSER_SAFARI = "SAFARI";
 	private static final String BROWSER_FIREFOX = "FIREFOX";
 	@SuppressWarnings({})
-	static AndroidDriver<MobileElement> androiddriver = null;
+
+	static RemoteWebDriver driver = null;
 	static AppiumDriver adriver = null;
-		static WebDriver driver = null;
+		
 	static DesiredCapabilities capabilities = new DesiredCapabilities();
 	private static String browser;
 
 	public static AppiumDriver selectappium() throws Exception {
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
-		capabilities.setCapability(CapabilityType.VERSION, "7.1");
-		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
+		capabilities.setCapability(CapabilityType.BROWSER_VERSION, "7.1");
+		capabilities.setCapability(CapabilityType.PLATFORM_NAME, "Mac");
 		adriver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub/"), capabilities);
 		return adriver;
 	}
 
-	public static AndroidDriver<MobileElement> selectappiumand(String DeviceId,String AppLocation,String AppPackage,String AppActivity) throws Exception {
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,MobilePlatform.ANDROID);
-		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DeviceId);
-		capabilities.setCapability(MobileCapabilityType.FULL_RESET,"true");
-		capabilities.setCapability(MobileCapabilityType.APP,AppLocation);
+	public static RemoteWebDriver selectappiumand(String DeviceId,String AppLocation,String AppPackage,String AppActivity) throws Exception {
+//		**************** Pradeep **********************
+//		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,MobilePlatform.ANDROID);
+//		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DeviceId);
+//		capabilities.setCapability(MobileCapabilityType.FULL_RESET,"true");
+//		capabilities.setCapability(MobileCapabilityType.APP,AppLocation);
+//		
+//		capabilities.setCapability("appPackage",AppPackage);
+//		capabilities.setCapability("appActivity",AppActivity);
+//		//capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.APPIUM);
+//		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
+//		androiddriver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+//		Thread.sleep(5000);
+//		return androiddriver;
 		
-		capabilities.setCapability("appPackage",AppPackage);
-		capabilities.setCapability("appActivity",AppActivity);
-		//capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.APPIUM);
-		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
-		androiddriver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-		Thread.sleep(5000);
-		return androiddriver;
+		UiAutomator2Options options = new UiAutomator2Options();
+        options.setDeviceName(DeviceId);
+        options.setPlatformName(MobilePlatform.ANDROID);
+        options.setAppPackage(AppPackage);
+        options.setAppActivity(AppActivity);
+
+        options.setNoReset(false);
+        options.setNewCommandTimeout(Duration.ofMinutes(10));
+        return (new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options));
+
+		
+		
 		}
 	
 	
 	
 public static AppiumDriver selectappiumAndroid() throws Exception {
 		capabilities.setCapability("device", "Android");
-		capabilities.setCapability(CapabilityType.VERSION, "4.4");
-		capabilities.setCapability(CapabilityType.PLATFORM, "MAC");
+		capabilities.setCapability(CapabilityType.BROWSER_VERSION, "4.4");
+		capabilities.setCapability(CapabilityType.PLATFORM_NAME, "MAC");
 		adriver = (AppiumDriver) new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub/"), capabilities);
 		return adriver;
 	}
@@ -103,34 +123,66 @@ public static AppiumDriver selectappiumAndroid() throws Exception {
 		} else if (driverType.toUpperCase().equals(BROWSER_SAFARI)) {
 			return new SafariDriver();
 		} else if (driverType.toUpperCase().equals(BROWSER_CHROME)) {
-			if (osname.contains(OS_WIN)) {
-				File ff = new File("Drivers/chromedriver.exe");
-				String path = ff.getAbsolutePath();
-				System.setProperty("webdriver.chrome.driver", path);
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("disable-infobars");
-				return new ChromeDriver(options);
-			} else {
-				File chromePath = new File("Drivers/chromedriver");
-				String path = chromePath.getAbsolutePath();
-				System.setProperty("webdriver.chrome.driver", path);
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("disable-infobars");
-				return new ChromeDriver(options);
-			}
+			
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--disable-notifications");
+			options.addArguments("disable-infobars");
+			return new ChromeDriver(options);
+			
+//			********** Pradeep ************
+//			if (osname.contains(OS_WIN)) {
+//				File ff = new File("Drivers/chromedriver.exe");
+//				String path = ff.getAbsolutePath();
+//				System.setProperty("webdriver.chrome.driver", path);
+//				ChromeOptions options = new ChromeOptions();
+//				options.addArguments("disable-infobars");
+//				return new ChromeDriver(options);
+//			} else {
+//				
+//				File chromePath = new File("Drivers/chromedriver");
+//				String path = chromePath.getAbsolutePath();
+//				System.setProperty("webdriver.chrome.driver", path);
+//				ChromeOptions options = new ChromeOptions();
+//				options.addArguments("disable-infobars");
+//				return new ChromeDriver(options);
+//			}
+			
 		} else if (driverType.toUpperCase().equals("APPCHROME")) {
 			String[] device = DeviceId.split(",");
-			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, device[1]);
-			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device[0]);	
-			capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
-			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-			try {
-				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-				System.out.println("mobile chrome opened");
-				return driver;
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
+//			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, device[1]);
+//			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device[0]);	
+//			capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
+//			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+//			try {
+//				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+//				System.out.println("mobile chrome opened");
+//				return driver;
+//			} catch (Exception e) {
+//				System.out.println(e.getMessage());
+//			}
+			
+			
+			UiAutomator2Options options = new UiAutomator2Options();
+	        options.setDeviceName(device[0]);
+	        options.setPlatformName("Android");
+	        options.setPlatformVersion(device[1]);
+	        options.withBrowserName("Chrome");
+//	        options.setChromedriverExecutable(basePath + "/src/test/resources/driver/chromedriver");
+	        options.setNoReset(false);
+	        options.setNewCommandTimeout(Duration.ofMinutes(10));
+	        options.setCapability("unicodeKeyboard", false);
+	        options.setCapability("resetKeyboard", true);
+	        ChromeOptions chromeOptions = new ChromeOptions();
+	        Map<String, Object> prefs = new HashMap<>();
+	        prefs.put("credentials_enable_service", false);
+	        prefs.put("profile.password_manager_enabled", false);
+	        chromeOptions.setExperimentalOption("prefs", prefs);
+	        options.merge(chromeOptions);
+
+	        return (new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options));
+			
+			
+			
 		} else if (GRID.equalsIgnoreCase(driverType)) {
 			// TODO as testng provide flexible way to implement grid do we need
 			// this code

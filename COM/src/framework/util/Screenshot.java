@@ -12,6 +12,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.utils.FileUtil;
+
 public class Screenshot {
 	public static String capture(WebDriver driver, String screenshotFileName) throws IOException {
 

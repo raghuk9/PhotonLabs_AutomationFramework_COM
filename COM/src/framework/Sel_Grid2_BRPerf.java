@@ -33,18 +33,18 @@ public class Sel_Grid2_BRPerf {
 		if (platform.equalsIgnoreCase("MAC")) {
 			caps.setPlatform(Platform.MAC);
 		}
-		if (browser.equalsIgnoreCase("Chrome")) {
-			caps = DesiredCapabilities.chrome();
-		}
-		if (browser.equalsIgnoreCase("Firefox")) {
-			caps = DesiredCapabilities.firefox();
-		}
-		if (browser.equalsIgnoreCase("IE")) {
-			caps = DesiredCapabilities.internetExplorer();
-		}
-		if (browser.equalsIgnoreCase("safari")) {
-			caps = DesiredCapabilities.safari();
-		}
+//		if (browser.equalsIgnoreCase("Chrome")) {
+//			caps = DesiredCapabilities.chrome();
+//		}
+//		if (browser.equalsIgnoreCase("Firefox")) {
+//			caps = DesiredCapabilities.firefox();
+//		}
+//		if (browser.equalsIgnoreCase("IE")) {
+//			caps = DesiredCapabilities.internetExplorer();
+//		}
+//		if (browser.equalsIgnoreCase("safari")) {
+//			caps = DesiredCapabilities.safari();
+//		}
 		driver = new RemoteWebDriver(new URL(HUB_URL), caps);
 		dimension = new Dimension(480, 800);
 		driver.manage().window().setSize(dimension);
