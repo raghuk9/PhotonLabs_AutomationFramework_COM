@@ -2,7 +2,6 @@ package framework;
 
 import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import org.openqa.selenium.*;
@@ -206,7 +205,7 @@ public class SizeAndLocation {
 	}
 
 	public static Set<String> sizeAndLocation(String viewPort, String functionality, String driverExecute,
-											  String testCaseno, String testCaseDescription, String testCaseExecute, MobileElement element,
+											  String testCaseno, String testCaseDescription, String testCaseExecute, WebElement element,
 											  String testData, String action, AppiumDriver driver, String oldValue,String DriverToInvoke, String TakeScreenshot, int j, String report,
 											  String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
 			throws IOException, ParseException {

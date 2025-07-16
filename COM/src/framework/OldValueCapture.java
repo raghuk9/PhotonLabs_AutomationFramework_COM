@@ -1,7 +1,6 @@
 package framework;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -24,7 +23,7 @@ public class OldValueCapture {
 		return null;
 	}
 
-	public String oldValueCapture(MobileElement element, AppiumDriver driver,
+	public String oldValueCapture(WebElement element, AppiumDriver driver,
 			String startTm) throws InterruptedException {
 		String Status = null;
 		try {

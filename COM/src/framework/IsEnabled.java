@@ -1,20 +1,22 @@
 package framework;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-public class isEnabled {
-		    public isEnabled (String viewPort, String functionality, String driverExecute, String testCaseno,
+
+public class IsEnabled {
+		    public IsEnabled (String viewPort, String functionality, String driverExecute, String testCaseno,
 	                                   String testCaseDescription, String testCaseExecute, WebElement webelement, String testData, String action,
 	                                   WebDriver driver, String oldValue, String DriverToInvoke, String TakeScreenshot, int j, String report,
 	                                   String application, String startTm, String endTm, Set<String> windowhandles, ExtentTest test)
@@ -28,8 +30,8 @@ public class isEnabled {
 	         WebElement checkboxTwoEX = driver.findElement(By.id("checkboxTwoid"));
 
 	        
-	         (new WebDriverWait(driver, 30)).until(ExpectedConditions
-	         .elementToBeClickable(checkboxOneEX));
+	         (new WebDriverWait(driver, Duration.ofSeconds(30))).until(ExpectedConditions
+	 	            .elementToBeClickable(checkboxOneEX));
 
 	         // Declaring a local variable of type "Boolean" to initialize the
 	         // value of the webElement (checkboxOneid) and webElement (checkboxTwoid)
@@ -71,9 +73,11 @@ public class isEnabled {
 	            // Click on a radio button then check if the save button is now enabled
 
 	            WebElement radioButton = driver.findElement(By.id(""));
+	            
+	            
+		         (new WebDriverWait(driver, Duration.ofSeconds(30))).until(ExpectedConditions
+		 	            .elementToBeClickable(radioButton));
 
-	            (new WebDriverWait(driver, 30)).until(ExpectedConditions
-	            .elementToBeClickable(radioButton));
 
 	            radioButton.click();
 
@@ -119,8 +123,8 @@ public class isEnabled {
 	    }
 
 	    @SuppressWarnings("rawtypes")
-	    public isEnabled(final String viewPort, final String functionality, final String driverExecute, final String testCaseno,
-	                                   final String testCaseDescription, final String testCaseExecute, final MobileElement element, final String testData, final String action,
+	    public IsEnabled(final String viewPort, final String functionality, final String driverExecute, final String testCaseno,
+	                                   final String testCaseDescription, final String testCaseExecute, final WebElement element, final String testData, final String action,
 	                                   final AppiumDriver driver, final String oldValue, final String DriverToInvoke, final String TakeScreenshot, final int j, final String report,
 	                                   final String application, final String startTm, final String endTm, final Set<String> windowhandles, final ExtentTest test)
 	            throws IOException, ParseException, InterruptedException {
@@ -142,8 +146,10 @@ public class isEnabled {
 	            // Click on a radio button then check if the save button is now enabled
 
 	            WebElement radioButton = driver.findElement(By.id(""));
-
-	            (new WebDriverWait(driver, 30)).until(ExpectedConditions
+	
+	     
+	            
+	            (new WebDriverWait(driver, Duration.ofSeconds(2))).until(ExpectedConditions
 	            .elementToBeClickable(radioButton));
 
 	            radioButton.click();
